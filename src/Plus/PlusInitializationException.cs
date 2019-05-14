@@ -4,44 +4,44 @@ using System.Runtime.Serialization;
 namespace Plus
 {
     /// <summary>
-    /// 所有异常应继承此异常基类
+    /// 如果初始化过程中出现问题,将引发此异常
     /// </summary>
     [Serializable]
-    public class PlusException : Exception
+    public class PlusInitializationException : PlusException
     {
         /// <summary>
-        /// 创建一个新的 <see cref="PlusException"/> 对象
+        /// 构造函数
         /// </summary>
-        public PlusException()
+        public PlusInitializationException()
         {
 
         }
 
         /// <summary>
-        /// 创建一个新的 <see cref="PlusException"/> 对象
+        /// 构造函数用于序列化
         /// </summary>
-        public PlusException(SerializationInfo serializationInfo, StreamingContext context)
+        public PlusInitializationException(SerializationInfo serializationInfo, StreamingContext context)
             : base(serializationInfo, context)
         {
 
         }
 
         /// <summary>
-        /// 创建一个新的 <see cref="PlusException"/> 对象
+        /// 构造函数
         /// </summary>
         /// <param name="message">异常消息</param>
-        public PlusException(string message)
+        public PlusInitializationException(string message)
             : base(message)
         {
 
         }
 
         /// <summary>
-        /// 创建一个新的 <see cref="PlusException"/> 对象
+        /// 构造函数
         /// </summary>
         /// <param name="message">异常消息</param>
         /// <param name="innerException">内部异常</param>
-        public PlusException(string message, Exception innerException)
+        public PlusInitializationException(string message, Exception innerException)
             : base(message, innerException)
         {
 
