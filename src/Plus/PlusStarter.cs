@@ -4,6 +4,7 @@ using Plus.Configuration.Startup;
 using Plus.Dependency;
 using Plus.Dependency.Installers;
 using Plus.Modules;
+using Plus.Runtime.Validation.Interception;
 using System;
 using System.Reflection;
 
@@ -97,7 +98,7 @@ namespace Plus
 
         public void AddInterceptorRegistrars()
         {
-            //ValidationInterceptorRegistrar.Initialize(IocManager);
+            ValidationInterceptorRegistrar.Initialize(IocManager);
             //UnitOfWorkRegistrar.Initialize(IocManager);
         }
     }
