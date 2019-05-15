@@ -17,15 +17,9 @@ namespace Plus
 
         private IPlusModuleManager _moduleManager;
 
-        public Type StartupModule
-        {
-            get;
-        }
+        public Type StartupModule { get; }
 
-        public IIocManager IocManager
-        {
-            get;
-        }
+        public IIocManager IocManager { get; }
 
         private PlusStarter(Type startupModule, Action<PlusStarterOptions> optionsAction = null)
         {
@@ -95,10 +89,9 @@ namespace Plus
         {
             if (!IocManager.IsRegistered<PlusStarter>())
             {
-                IocManager.IocContainer.Register((IRegistration[])new IRegistration[1]
-                {
-                Component.For<PlusStarter>().Instance(this)
-                });
+                IocManager.IocContainer.Register(
+                     Component.For<PlusStarter>().Instance(this)
+                );
             }
         }
 

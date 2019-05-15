@@ -36,7 +36,6 @@ namespace Plus.Event.Bus
 
         public static EventBus Default { get; } = new EventBus();
 
-
         public ILogger Logger { get; set; }
 
         public EventBus()
@@ -55,11 +54,6 @@ namespace Plus.Event.Bus
             return Register(typeof(TEventData), handler);
         }
 
-        public IDisposable Register<TEventData, THandler>() where TEventData : IEventData where THandler : IEventHandler<TEventData>, new()
-        {
-            return Register(typeof(TEventData), new TransientEventHandlerFactory<THandler>());
-        }
-
         public IDisposable Register(Type eventType, IEventHandler handler)
         {
             return Register(eventType, new SingleInstanceHandlerFactory(handler));
@@ -75,6 +69,23 @@ namespace Plus.Event.Bus
             GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Add(handlerFactory));
 
             return new FactoryUnregistrar(this, eventType, handlerFactory);
+        }
+
+        public IDisposable Register<TEventData, THandler>()
+            where TEventData : IEventData
+            where THandler : IEventHandler, new()
+        {
+            return Register(typeof(TEventData), new TransientEventHandlerFactory<THandler>());
+        }
+
+        public IDisposable AsyncRegister<TEventData>(Func<TEventData, Task> action) where TEventData : IEventData
+        {
+            return Register(typeof(TEventData), new AsyncActionEventHandler<TEventData>(action));
+        }
+
+        public IDisposable AsyncRegister<TEventData>(IAsyncEventHandler<TEventData> handler) where TEventData : IEventData
+        {
+            return Register(typeof(TEventData), handler);
         }
 
         public void Unregister<TEventData>(Action<TEventData> action) where TEventData : IEventData
@@ -128,6 +139,36 @@ namespace Plus.Event.Bus
             GetOrCreateHandlerFactories(eventType).Locking(factories => factories.Remove(factory));
         }
 
+        public void AsyncUnregister<TEventData>(Func<TEventData, Task> action) where TEventData : IEventData
+        {
+            GetOrCreateHandlerFactories(typeof(TEventData))
+                .Locking(factories =>
+                {
+                    factories.RemoveAll(
+                        factory =>
+                        {
+                            var singleInstanceFactory = factory as SingleInstanceHandlerFactory;
+                            if (singleInstanceFactory == null)
+                            {
+                                return false;
+                            }
+
+                            var actionHandler = singleInstanceFactory.HandlerInstance as AsyncActionEventHandler<TEventData>;
+                            if (actionHandler == null)
+                            {
+                                return false;
+                            }
+
+                            return actionHandler.Action == action;
+                        });
+                });
+        }
+
+        public void AsyncUnregister<TEventData>(IAsyncEventHandler<TEventData> handler) where TEventData : IEventData
+        {
+            Unregister(typeof(TEventData), handler);
+        }
+
         public void UnregisterAll<TEventData>() where TEventData : IEventData
         {
             UnregisterAll(typeof(TEventData));
@@ -165,6 +206,52 @@ namespace Plus.Event.Bus
                 }
                 throw new AggregateException("More than one error has occurred while triggering the event: " + eventType, list);
             }
+        }
+
+        public Task TriggerAsync<TEventData>(TEventData eventData) where TEventData : IEventData
+        {
+            return TriggerAsync((object)null, eventData);
+        }
+
+        public Task TriggerAsync<TEventData>(object eventSource, TEventData eventData) where TEventData : IEventData
+        {
+            ExecutionContext.SuppressFlow();
+            Task result = Task.Factory.StartNew(delegate
+            {
+                try
+                {
+                    Trigger(eventSource, eventData);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex.ToString(), ex);
+                }
+            });
+            ExecutionContext.RestoreFlow();
+            return result;
+        }
+
+        public Task TriggerAsync(Type eventType, IEventData eventData)
+        {
+            return TriggerAsync(eventType, null, eventData);
+        }
+
+        public Task TriggerAsync(Type eventType, object eventSource, IEventData eventData)
+        {
+            ExecutionContext.SuppressFlow();
+            Task result = Task.Factory.StartNew(delegate
+            {
+                try
+                {
+                    Trigger(eventType, eventSource, eventData);
+                }
+                catch (Exception ex)
+                {
+                    Logger.Warn(ex.ToString(), ex);
+                }
+            });
+            ExecutionContext.RestoreFlow();
+            return result;
         }
 
         private void TriggerHandlingException(Type eventType, object eventSource, IEventData eventData, List<Exception> exceptions)
@@ -243,52 +330,6 @@ namespace Plus.Event.Bus
                 return true;
             }
             return false;
-        }
-
-        public Task TriggerAsync<TEventData>(TEventData eventData) where TEventData : IEventData
-        {
-            return TriggerAsync((object)null, eventData);
-        }
-
-        public Task TriggerAsync<TEventData>(object eventSource, TEventData eventData) where TEventData : IEventData
-        {
-            ExecutionContext.SuppressFlow();
-            Task result = Task.Factory.StartNew(delegate
-            {
-                try
-                {
-                    Trigger(eventSource, eventData);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex.ToString(), ex);
-                }
-            });
-            ExecutionContext.RestoreFlow();
-            return result;
-        }
-
-        public Task TriggerAsync(Type eventType, IEventData eventData)
-        {
-            return TriggerAsync(eventType, null, eventData);
-        }
-
-        public Task TriggerAsync(Type eventType, object eventSource, IEventData eventData)
-        {
-            ExecutionContext.SuppressFlow();
-            Task result = Task.Factory.StartNew(delegate
-            {
-                try
-                {
-                    Trigger(eventType, eventSource, eventData);
-                }
-                catch (Exception ex)
-                {
-                    Logger.Warn(ex.ToString(), ex);
-                }
-            });
-            ExecutionContext.RestoreFlow();
-            return result;
         }
 
         private List<IEventHandlerFactory> GetOrCreateHandlerFactories(Type eventType)
