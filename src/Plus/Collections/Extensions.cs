@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.ExceptionServices;
 
 namespace Plus.Collections
 {
@@ -138,6 +141,47 @@ namespace Plus.Collections
         public static TValue GetOrAdd<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, Func<TValue> factory)
         {
             return dictionary.GetOrAdd(key, k => factory());
+        }
+
+        public static Assembly GetAssembly(this Type type)
+        {
+            return type.GetTypeInfo().Assembly;
+        }
+
+        public static MethodInfo GetMethod(this Type type, string methodName, int pParametersCount = 0, int pGenericArgumentsCount = 0)
+        {
+            return type
+                .GetMethods()
+                .Where(m => m.Name == methodName).ToList()
+                .Select(m => new
+                {
+                    Method = m,
+                    Params = m.GetParameters(),
+                    Args = m.GetGenericArguments()
+                })
+                .Where(x => x.Params.Length == pParametersCount
+                            && x.Args.Length == pGenericArgumentsCount
+                ).Select(x => x.Method)
+                .First();
+        }
+
+        /// <summary>
+        /// Executes given <paramref name="action"/> by locking given <paramref name="source"/> object.
+        /// </summary>
+        /// <typeparam name="T">Type of the object (to be locked)</typeparam>
+        /// <param name="source">Source object (to be locked)</param>
+        /// <param name="action">Action (to be executed)</param>
+        public static void Locking<T>(this T source, Action<T> action) where T : class
+        {
+            lock (source)
+            {
+                action(source);
+            }
+        }
+
+        public static void ReThrow(this Exception exception)
+        {
+            ExceptionDispatchInfo.Capture(exception).Throw();
         }
     }
 }

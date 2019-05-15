@@ -6,7 +6,7 @@ namespace Plus.Configuration.Startup
     /// <summary>
     /// 在启动时的模块配置
     /// </summary>
-    public interface IPlusStartupConfiguration
+    public interface IPlusStartupConfiguration: IDictionaryBasedConfig
     {
         /// <summary>
         /// 获取与此配置关联的IOC管理器
@@ -26,5 +26,20 @@ namespace Plus.Configuration.Startup
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
         T Get<T>();
+
+        //IUnitOfWorkDefaultOptions UnitOfWork
+        //{
+        //    get;
+        //}
+
+        //ICachingConfiguration Caching
+        //{
+        //    get;
+        //}
+
+        //IValidationConfiguration Validation
+        //{
+        //    get;
+        //}
     }
 }
