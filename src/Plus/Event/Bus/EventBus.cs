@@ -1,5 +1,4 @@
 ﻿using Castle.Core.Logging;
-using Plus.Collections;
 using Plus.Event.Bus.Factories;
 using Plus.Event.Bus.Factories.Internals;
 using Plus.Event.Bus.Handlers;

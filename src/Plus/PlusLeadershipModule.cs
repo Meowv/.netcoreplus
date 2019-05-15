@@ -1,11 +1,9 @@
 ﻿using Castle.MicroKernel.Registration;
-using Plus.Collections;
 using Plus.Configuration.Startup;
 using Plus.Dependency;
 using Plus.Event.Bus;
 using Plus.Modules;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq.Expressions;
 
