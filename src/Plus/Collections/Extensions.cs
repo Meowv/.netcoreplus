@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
+using System.Threading.Tasks;
 
 namespace Plus.Collections
 {
@@ -11,6 +12,11 @@ namespace Plus.Collections
     /// </summary>
     public static class Extensions
     {
+        public static bool IsAsync(this MethodInfo method)
+        {
+            return method.ReturnType == typeof(Task) || (method.ReturnType.GetTypeInfo().IsGenericType && method.ReturnType.GetGenericTypeDefinition() == typeof(Task<>));
+        }
+
         public static List<T> SortByDependencies<T>(this IEnumerable<T> source, Func<T, IEnumerable<T>> getDependencies)
         {
             var sorted = new List<T>();

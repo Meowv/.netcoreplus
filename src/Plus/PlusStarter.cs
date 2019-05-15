@@ -3,6 +3,7 @@ using Castle.MicroKernel.Registration;
 using Plus.Configuration.Startup;
 using Plus.Dependency;
 using Plus.Dependency.Installers;
+using Plus.Domain.Uow;
 using Plus.Modules;
 using Plus.Runtime.Validation.Interception;
 using System;
@@ -99,7 +100,7 @@ namespace Plus
         public void AddInterceptorRegistrars()
         {
             ValidationInterceptorRegistrar.Initialize(IocManager);
-            //UnitOfWorkRegistrar.Initialize(IocManager);
+            UnitOfWorkRegistrar.Initialize(IocManager);
         }
     }
 }
