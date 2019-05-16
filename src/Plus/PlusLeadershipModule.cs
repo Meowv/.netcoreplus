@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Plus.Configuration.Startup;
 using Plus.Dependency;
+using Plus.Domain.Uow;
 using Plus.Event.Bus;
 using Plus.Modules;
 using System;
@@ -9,6 +10,9 @@ using System.Linq.Expressions;
 
 namespace Plus
 {
+    /// <summary>
+    /// Plus Leadership Module
+    /// </summary>
     public class PlusLeadershipModule : PlusModule
     {
         public override void PreInitialize()
@@ -52,14 +56,14 @@ namespace Plus
                 );
             }
 
-            //IocManager.RegisterIfNot<IUnitOfWork, NullUnitOfWork>(DependencyLifeStyle.Transient);
-            //IocManager.RegisterIfNot<IUnitOfWorkFilterExecuter, NullUnitOfWorkFilterExecuter>();
+            IocManager.RegisterIfNot<IUnitOfWork, NullUnitOfWork>(DependencyLifeStyle.Transient);
+            IocManager.RegisterIfNot<IUnitOfWorkFilterExecuter, NullUnitOfWorkFilterExecuter>();
         }
 
         private void AddMethodParameterValidators()
         {
-            //Configuration.Validation.Validators.Add<DataAnnotationsValidator>();
-            //Configuration.Validation.Validators.Add<ValidatableObjectValidator>();
+            Configuration.Validation.Validators.Add<DataAnnotationsValidator>();
+            Configuration.Validation.Validators.Add<ValidatableObjectValidator>();
         }
 
         private void AddIgnoredTypes()
@@ -72,20 +76,19 @@ namespace Plus
 
             foreach (var ignoredType in commonIgnoredTypes)
             {
-                //Configuration.Auditing.IgnoredTypes.AddIfNotContains(ignoredType);
-                //Configuration.Validation.IgnoredTypes.AddIfNotContains(ignoredType);
+                Configuration.Validation.IgnoredTypes.AddIfNotContains(ignoredType);
             }
 
             var validationIgnoredTypes = new[] { typeof(Type) };
             foreach (var ignoredType in validationIgnoredTypes)
             {
-                //Configuration.Validation.IgnoredTypes.AddIfNotContains(ignoredType);
+                Configuration.Validation.IgnoredTypes.AddIfNotContains(ignoredType);
             }
         }
 
         private void ConfigureCaches()
         {
-        }
 
+        }
     }
 }
