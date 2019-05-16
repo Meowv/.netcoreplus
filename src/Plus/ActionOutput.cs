@@ -5,12 +5,12 @@ using System.Text;
 namespace Plus
 {
     /// <summary>
-    /// Action Output
+    /// 输出
     /// </summary>
     public class ActionOutput
     {
         /// <summary>
-        /// Errors List
+        /// 错误列表
         /// </summary>
         public IList<string> Errors { get; }
 
@@ -20,7 +20,7 @@ namespace Plus
         public bool Success => Errors.Count == 0;
 
         /// <summary>
-        /// Exception
+        /// 异常
         /// </summary>
         public Exception Exception { get; set; }
 

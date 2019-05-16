@@ -8,6 +8,9 @@ using System.Reflection;
 
 namespace Plus.Modules
 {
+    /// <summary>
+    /// 模块
+    /// </summary>
     public abstract class PlusModule
     {
         protected internal IIocManager IocManager { get; internal set; }

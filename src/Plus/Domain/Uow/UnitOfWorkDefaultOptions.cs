@@ -6,6 +6,9 @@ using System.Transactions;
 
 namespace Plus.Domain.Uow
 {
+    /// <summary>
+    /// UnitOfWorkDefaultOptions
+    /// </summary>
     internal class UnitOfWorkDefaultOptions : IUnitOfWorkDefaultOptions
     {
         public TransactionScopeOption Scope { get; set; }

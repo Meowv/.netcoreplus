@@ -5,6 +5,9 @@ using System.Collections.Immutable;
 
 namespace Plus.Runtime.Caching.Configuration
 {
+    /// <summary>
+    /// CachingConfiguration
+    /// </summary>
     internal class CachingConfiguration : ICachingConfiguration
     {
         public IPlusStartupConfiguration PlusConfiguration { get; private set; }

@@ -3,6 +3,9 @@ using System;
 
 namespace Plus.Logging
 {
+    /// <summary>
+    /// LoggerExtensions
+    /// </summary>
     public static class LoggerExtensions
     {
         public static void Log(this ILogger logger, LogSeverity severity, string message)

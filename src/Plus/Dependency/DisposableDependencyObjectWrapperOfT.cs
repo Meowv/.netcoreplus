@@ -2,6 +2,10 @@
 
 namespace Plus.Dependency
 {
+    /// <summary>
+    /// DisposableDependencyObjectWrapper
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     internal class DisposableDependencyObjectWrapper<T> : IDisposableDependencyObjectWrapper<T>, IDisposable
     {
         private readonly IIocResolver _iocResolver;

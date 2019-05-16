@@ -5,16 +5,34 @@ using System.Reflection;
 
 namespace Plus.Collections
 {
+    /// <summary>
+    /// A shortcut for <see cref="TypeList{TBaseType}"/> to use object as base type
+    /// </summary>
     public class TypeList : TypeList<object>, ITypeList
     {
     }
 
+    /// <summary>
+    /// Extends <see cref="List{Type}"/> to add restriction a specific base type.
+    /// </summary>
+    /// <typeparam name="TBaseType"></typeparam>
     public class TypeList<TBaseType> : ITypeList<TBaseType>
     {
+        /// <summary>
+        /// Gets the count.
+        /// </summary>
         public int Count { get { return _typeList.Count; } }
 
+        /// <summary>
+        /// Gets a value indicating whether this instance is read only.
+        /// </summary>
         public bool IsReadOnly { get { return false; } }
 
+        /// <summary>
+        /// Gets or sets the <see cref="Type"/> at the specified index.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public Type this[int index]
         {
             get { return _typeList[index]; }
@@ -27,6 +45,9 @@ namespace Plus.Collections
 
         private readonly List<Type> _typeList;
 
+        /// <summary>
+        /// Creates a new <see cref="TypeList{T}"/> object.
+        /// </summary>
         public TypeList()
         {
             _typeList = new List<Type>();

@@ -2,6 +2,9 @@
 
 namespace Plus
 {
+    /// <summary>
+    /// PlusStarterOptions
+    /// </summary>
     public class PlusStarterOptions
     {
         public IIocManager IocManager { get; set; }

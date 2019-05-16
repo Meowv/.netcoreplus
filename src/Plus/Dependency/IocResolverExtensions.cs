@@ -2,6 +2,9 @@
 
 namespace Plus.Dependency
 {
+    /// <summary>
+    /// <see cref="IIocResolver"/> 扩展方法
+    /// </summary>
     public static class IocResolverExtensions
     {
         public static IDisposableDependencyObjectWrapper<T> ResolveAsDisposable<T>(this IIocResolver iocResolver)

@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Plus.Configuration.Startup
 {
+    /// <summary>
+    /// IValidationConfiguration
+    /// </summary>
     public interface IValidationConfiguration
     {
         List<Type> IgnoredTypes { get; }

@@ -90,7 +90,7 @@ namespace Plus.Domain.Uow
                     exception => uow.Dispose()
                 );
             }
-            else //Task<TResult>
+            else
             {
                 invocation.ReturnValue = InternalAsyncHelper.CallAwaitTaskWithPostActionAndFinallyAndGetResult(
                     invocation.Method.ReturnType.GenericTypeArguments[0],

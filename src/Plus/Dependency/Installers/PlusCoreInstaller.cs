@@ -9,6 +9,9 @@ using Plus.Runtime.Caching.Configuration;
 
 namespace Plus.Dependency.Installers
 {
+    /// <summary>
+    /// PlusCoreInstaller
+    /// </summary>
     internal class PlusCoreInstaller : IWindsorInstaller
     {
         public void Install(IWindsorContainer container, IConfigurationStore store)

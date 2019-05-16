@@ -2,6 +2,9 @@
 
 namespace Plus.Domain.Uow
 {
+    /// <summary>
+    /// DataFilterConfiguration
+    /// </summary>
     public class DataFilterConfiguration
     {
         public string FilterName { get; }

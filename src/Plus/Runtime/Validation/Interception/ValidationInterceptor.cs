@@ -5,7 +5,7 @@ using Plus.Dependency;
 namespace Plus.Runtime.Validation.Interception
 {
     /// <summary>
-    /// 这个拦截器用于拦截类的方法调用，类的方法必须经过验证。
+    /// 这个拦截器用于拦截类的方法调用，类的方法必须经过验证
     /// </summary>
     public class ValidationInterceptor : IInterceptor
     {

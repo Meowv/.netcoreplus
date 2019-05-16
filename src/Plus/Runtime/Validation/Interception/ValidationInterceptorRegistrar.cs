@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace Plus.Runtime.Validation.Interception
 {
+    /// <summary>
+    /// ValidationInterceptorRegistrar
+    /// </summary>
     internal static class ValidationInterceptorRegistrar
     {
         public static void Initialize(IIocManager iocManager)

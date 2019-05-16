@@ -3,10 +3,12 @@ using System;
 
 namespace Plus.Aspects
 {
+    /// <summary>
+    /// PlusCrossCuttingConcerns
+    /// </summary>
     internal class PlusCrossCuttingConcerns
     {
         public const string Validation = "PlusValidation";
-
         public const string UnitOfWork = "PlusUnitOfWork";
 
         public static void AddApplied(object obj, params string[] concerns)

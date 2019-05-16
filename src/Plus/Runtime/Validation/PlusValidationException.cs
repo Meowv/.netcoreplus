@@ -6,6 +6,9 @@ using System.Runtime.Serialization;
 
 namespace Plus.Runtime.Validation
 {
+    /// <summary>
+    /// PlusValidationException
+    /// </summary>
     [Serializable]
     public class PlusValidationException : PlusException, IHasLogSeverity
     {

@@ -3,12 +3,19 @@ using System.Collections.Generic;
 
 namespace Plus.Domain.Entities
 {
+    /// <summary>
+    /// Entity
+    /// </summary>
     [Serializable]
     public abstract class Entity : Entity<int>, IEntity
     {
 
     }
 
+    /// <summary>
+    /// Entity
+    /// </summary>
+    /// <typeparam name="TPrimaryKey"></typeparam>
     [Serializable]
     public abstract class Entity<TPrimaryKey> : IEntity<TPrimaryKey>
     {

@@ -6,6 +6,9 @@ using System.Linq;
 
 namespace Plus.Logging
 {
+    /// <summary>
+    /// 帮助类，写日志用
+    /// </summary>
     public static class LogHelper
     {
         public static ILogger Logger { get; private set; }

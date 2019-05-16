@@ -2,7 +2,10 @@
 
 namespace Plus.Service
 {
-    interface IApplicationService : ITransientDependency
+    /// <summary>
+    /// IApplicationService
+    /// </summary>
+    public interface IApplicationService : ITransientDependency
     {
     }
 }

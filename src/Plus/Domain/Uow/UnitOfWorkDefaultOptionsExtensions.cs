@@ -1,11 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace Plus.Domain.Uow
 {
+    /// <summary>
+    /// UnitOfWorkDefaultOptionsExtensions
+    /// </summary>
     internal static class UnitOfWorkDefaultOptionsExtensions
     {
         public static UnitOfWorkAttribute GetUnitOfWorkAttributeOrNull(this IUnitOfWorkDefaultOptions unitOfWorkDefaultOptions, MethodInfo methodInfo)
@@ -24,7 +25,7 @@ namespace Plus.Domain.Uow
 
             if (unitOfWorkDefaultOptions.IsConventionalUowClass(methodInfo.DeclaringType))
             {
-                return new UnitOfWorkAttribute(); //Default
+                return new UnitOfWorkAttribute();
             }
 
             return null;

@@ -1,20 +1,20 @@
 ﻿namespace Plus.Domain.Entities
 {
     /// <summary>
-    /// Defines interface for base entity type. All entities in the system must implement this interface.
+    /// 为基本实体类型定义接口，系统中的所有实体都必须实现此接口
     /// </summary>
-    /// <typeparam name="TPrimaryKey">Type of the primary key of the entity</typeparam>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     public interface IEntity<TPrimaryKey>
     {
         /// <summary>
-        /// Unique identifier for this entity.
+        /// 主键
         /// </summary>
         TPrimaryKey Id { get; set; }
 
         /// <summary>
-        /// Checks if this entity is transient (not persisted to database and it has not an <see cref="Id"/>).
+        /// True => transient
         /// </summary>
-        /// <returns>True, if this entity is transient</returns>
+        /// <returns></returns>
         bool IsTransient();
     }
 }

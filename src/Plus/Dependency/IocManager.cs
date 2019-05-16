@@ -7,6 +7,9 @@ using System.Reflection;
 
 namespace Plus.Dependency
 {
+    /// <summary>
+    /// 该类用于直接执行依赖项注入任务
+    /// </summary>
     public class IocManager : IIocManager, IIocRegistrar, IIocResolver, IDisposable
     {
         private readonly List<IDependencyRegistrar> _conventionalRegistrars;

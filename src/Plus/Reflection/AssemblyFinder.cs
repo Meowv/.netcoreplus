@@ -5,6 +5,9 @@ using System.Reflection;
 
 namespace Plus.Reflection
 {
+    /// <summary>
+    /// AssemblyFinder
+    /// </summary>
     public class AssemblyFinder : IAssemblyFinder
     {
         private readonly IPlusModuleManager _moduleManager;

@@ -4,6 +4,9 @@ using System;
 
 namespace Plus.Event.Bus.Factories
 {
+    /// <summary>
+    /// IocHandlerFactory
+    /// </summary>
     public class IocHandlerFactory : IEventHandlerFactory
     {
         private readonly IIocResolver _iocResolver;

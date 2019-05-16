@@ -2,6 +2,9 @@
 
 namespace Plus.Dependency
 {
+    /// <summary>
+    /// RegistrationContext
+    /// </summary>
     internal class RegistrationContext : IRegistrationContext
     {
         /// <summary>
@@ -15,7 +18,7 @@ namespace Plus.Dependency
         public IIocManager IocManager { get; private set; }
 
         /// <summary>
-        /// 
+        /// Registration configuration.
         /// </summary>
         /// <param name="assembly"></param>
         /// <param name="iocManager"></param>

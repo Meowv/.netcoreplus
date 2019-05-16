@@ -11,6 +11,9 @@ using System.Reflection;
 
 namespace Plus
 {
+    /// <summary>
+    /// PlusStarter
+    /// </summary>
     public class PlusStarter : IDisposable
     {
         protected bool IsDisposed;

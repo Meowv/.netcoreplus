@@ -2,6 +2,9 @@
 
 namespace Plus.Configuration
 {
+    /// <summary>
+    /// 字典配置接口
+    /// </summary>
     public interface IDictionaryBasedConfig
     {
         void Set<T>(string name, T value);

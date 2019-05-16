@@ -4,6 +4,9 @@ using System.Threading.Tasks;
 
 namespace Plus
 {
+    /// <summary>
+    /// InternalAsyncHelper
+    /// </summary>
     internal static class InternalAsyncHelper
     {
         public static async Task AwaitTaskWithFinally(Task actualReturnValue, Action<Exception> finalAction)

@@ -3,6 +3,9 @@ using Plus.Dependency;
 
 namespace Plus
 {
+    /// <summary>
+    /// PlusEngine
+    /// </summary>
     public class PlusEngine
     {
         private bool _initialized = false;

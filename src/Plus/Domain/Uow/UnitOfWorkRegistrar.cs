@@ -6,12 +6,11 @@ using System.Reflection;
 
 namespace Plus.Domain.Uow
 {
+    /// <summary>
+    /// UnitOfWorkRegistrar
+    /// </summary>
     internal static class UnitOfWorkRegistrar
     {
-        /// <summary>
-        /// Initializes the registerer.
-        /// </summary>
-        /// <param name="iocManager">IOC manager</param>
         public static void Initialize(IIocManager iocManager)
         {
             iocManager.IocContainer.Kernel.ComponentRegistered += (key, handler) =>

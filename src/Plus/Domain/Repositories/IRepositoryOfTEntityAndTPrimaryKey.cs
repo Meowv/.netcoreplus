@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 namespace Plus.Domain.Repositories
 {
     /// <summary>
-    /// This interface is implemented by all repositories to ensure implementation of fixed methods.
+    /// 仓储接口
     /// </summary>
-    /// <typeparam name="TEntity">Main Entity type this repository works on</typeparam>
-    /// <typeparam name="TPrimaryKey">Primary key type of the entity</typeparam>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TPrimaryKey"></typeparam>
     public interface IRepository<TEntity, TPrimaryKey> : IRepository where TEntity : class, IEntity<TPrimaryKey>
     {
         #region Select/Get/Query

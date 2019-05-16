@@ -3,13 +3,12 @@ using System.Collections.Generic;
 
 namespace Plus.Configuration
 {
+    /// <summary>
+    /// 用于设置/获取 自定义配置
+    /// </summary>
     public class DictionaryBasedConfig : IDictionaryBasedConfig
     {
-        protected Dictionary<string, object> CustomSettings
-        {
-            get;
-            private set;
-        }
+        protected Dictionary<string, object> CustomSettings { get; private set; }
 
         public object this[string name]
         {

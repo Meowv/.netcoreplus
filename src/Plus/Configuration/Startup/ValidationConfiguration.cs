@@ -5,17 +5,14 @@ using System.Collections.Generic;
 
 namespace Plus.Configuration.Startup
 {
+    /// <summary>
+    /// ValidationConfiguration
+    /// </summary>
     public class ValidationConfiguration : IValidationConfiguration
     {
-        public List<Type> IgnoredTypes
-        {
-            get;
-        }
+        public List<Type> IgnoredTypes { get; }
 
-        public ITypeList<IMethodParameterValidator> Validators
-        {
-            get;
-        }
+        public ITypeList<IMethodParameterValidator> Validators { get; }
 
         public ValidationConfiguration()
         {

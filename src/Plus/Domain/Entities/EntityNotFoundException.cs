@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace Plus.Domain.Entities
 {
+    /// <summary>
+    /// EntityNotFoundException
+    /// </summary>
     [Serializable]
     public class EntityNotFoundException : PlusException
     {

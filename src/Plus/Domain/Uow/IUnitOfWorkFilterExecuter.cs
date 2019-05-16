@@ -1,5 +1,8 @@
 ﻿namespace Plus.Domain.Uow
 {
+    /// <summary>
+    /// IUnitOfWorkFilterExecuter
+    /// </summary>
     public interface IUnitOfWorkFilterExecuter
     {
         void ApplyDisableFilter(IUnitOfWork unitOfWork, string filterName);

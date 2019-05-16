@@ -2,6 +2,9 @@
 
 namespace Plus
 {
+    /// <summary>
+    /// SequentialGuidGenerator
+    /// </summary>
     public class SequentialGuidGenerator : IGuidGenerator
     {
         public static SequentialGuidGenerator Instance { get; } = new SequentialGuidGenerator();

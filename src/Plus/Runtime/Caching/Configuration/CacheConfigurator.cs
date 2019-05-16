@@ -2,6 +2,9 @@
 
 namespace Plus.Runtime.Caching.Configuration
 {
+    /// <summary>
+    /// CacheConfigurator
+    /// </summary>
     internal class CacheConfigurator : ICacheConfigurator
     {
         public string CacheName { get; private set; }

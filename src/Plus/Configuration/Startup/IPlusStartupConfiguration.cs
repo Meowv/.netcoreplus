@@ -1,4 +1,6 @@
 ﻿using Plus.Dependency;
+using Plus.Domain.Uow;
+using Plus.Runtime.Caching.Configuration;
 using System;
 
 namespace Plus.Configuration.Startup
@@ -27,19 +29,19 @@ namespace Plus.Configuration.Startup
         /// <returns></returns>
         T Get<T>();
 
-        //IUnitOfWorkDefaultOptions UnitOfWork
-        //{
-        //    get;
-        //}
+        /// <summary>
+        /// 用于配置工作单元
+        /// </summary>
+        IUnitOfWorkDefaultOptions UnitOfWork { get; }
 
-        //ICachingConfiguration Caching
-        //{
-        //    get;
-        //}
+        /// <summary>
+        /// 用于配置缓存
+        /// </summary>
+        ICachingConfiguration Caching { get; }
 
-        //IValidationConfiguration Validation
-        //{
-        //    get;
-        //}
+        /// <summary>
+        /// 用于配置验证
+        /// </summary>
+        IValidationConfiguration Validation { get; }
     }
 }

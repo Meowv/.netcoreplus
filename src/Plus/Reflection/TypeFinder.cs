@@ -6,6 +6,9 @@ using System.Reflection;
 
 namespace Plus.Reflection
 {
+    /// <summary>
+    /// TypeFinder
+    /// </summary>
     public class TypeFinder : ITypeFinder
     {
         public ILogger Logger { get; set; }

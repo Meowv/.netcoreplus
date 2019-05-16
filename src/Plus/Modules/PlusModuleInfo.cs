@@ -4,6 +4,9 @@ using System.Reflection;
 
 namespace Plus.Modules
 {
+    /// <summary>
+    /// PlusModuleInfo
+    /// </summary>
     public class PlusModuleInfo
     {
         public Assembly Assembly { get; }
