@@ -1,6 +1,7 @@
 ﻿namespace Plus.Domain.Entities
 {
-    public interface IEntity
+    public interface IEntity : IEntity<int>
     {
+
     }
 }
