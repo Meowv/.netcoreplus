@@ -28,14 +28,14 @@ namespace Plus
 
         private PlusStarter(Type startupModule, Action<PlusStarterOptions> optionsAction = null)
         {
-            PlusStarterOptions uPrimeStarterOptions = new PlusStarterOptions();
-            optionsAction?.Invoke(uPrimeStarterOptions);
+            PlusStarterOptions plusStarterOptions = new PlusStarterOptions();
+            optionsAction?.Invoke(plusStarterOptions);
             if (!((TypeInfo)typeof(PlusModule)).IsAssignableFrom(startupModule))
             {
                 throw new ArgumentException("startupModule should be derived from PlusModule.");
             }
             StartupModule = startupModule;
-            IocManager = uPrimeStarterOptions.IocManager;
+            IocManager = plusStarterOptions.IocManager;
             _logger = NullLogger.Instance;
             AddInterceptorRegistrars();
         }

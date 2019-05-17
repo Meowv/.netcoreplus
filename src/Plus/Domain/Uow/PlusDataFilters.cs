@@ -1,7 +1,7 @@
 ﻿namespace Plus.Domain.Uow
 {
     /// <summary>
-    /// Standard filters of ABP.
+    /// Standard filters of Plus.
     /// </summary>
     public static class PlusDataFilters
     {
@@ -28,7 +28,7 @@
         public const string MayHaveTenant = "MayHaveTenant";
 
         /// <summary>
-        /// Standard parameters of ABP.
+        /// Standard parameters of Plus.
         /// </summary>
         public static class Parameters
         {

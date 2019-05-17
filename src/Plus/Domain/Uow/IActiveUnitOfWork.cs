@@ -69,7 +69,7 @@ namespace Plus.Domain.Uow
         /// Does nothing for a filter if it's already disabled. 
         /// Use this method in a using statement to re-enable filters if needed.
         /// </summary>
-        /// <param name="filterNames">One or more filter names. <see cref="AbpDataFilters"/> for standard filters.</param>
+        /// <param name="filterNames">One or more filter names. <see cref="PlusDataFilters"/> for standard filters.</param>
         /// <returns>A <see cref="IDisposable"/> handle to take back the disable effect.</returns>
         IDisposable DisableFilter(params string[] filterNames);
 
@@ -78,14 +78,14 @@ namespace Plus.Domain.Uow
         /// Does nothing for a filter if it's already enabled.
         /// Use this method in a using statement to re-disable filters if needed.
         /// </summary>
-        /// <param name="filterNames">One or more filter names. <see cref="AbpDataFilters"/> for standard filters.</param>
+        /// <param name="filterNames">One or more filter names. <see cref="PlusDataFilters"/> for standard filters.</param>
         /// <returns>A <see cref="IDisposable"/> handle to take back the enable effect.</returns>
         IDisposable EnableFilter(params string[] filterNames);
 
         /// <summary>
         /// Checks if a filter is enabled or not.
         /// </summary>
-        /// <param name="filterName">Name of the filter. <see cref="AbpDataFilters"/> for standard filters.</param>
+        /// <param name="filterName">Name of the filter. <see cref="PlusDataFilters"/> for standard filters.</param>
         bool IsFilterEnabled(string filterName);
 
         /// <summary>
