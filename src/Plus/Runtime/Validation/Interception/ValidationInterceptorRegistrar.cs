@@ -1,7 +1,7 @@
 ﻿using Castle.Core;
 using Castle.MicroKernel;
 using Plus.Dependency;
-using Plus.Service;
+using Plus.Services;
 using System.Reflection;
 
 namespace Plus.Runtime.Validation.Interception

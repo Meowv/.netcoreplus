@@ -1,6 +1,6 @@
 ﻿using Plus.Dependency;
 
-namespace Plus.Service
+namespace Plus.Services
 {
     /// <summary>
     /// IApplicationService

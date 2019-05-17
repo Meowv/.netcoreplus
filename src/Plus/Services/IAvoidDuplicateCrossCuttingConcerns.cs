@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Plus.Service
+namespace Plus.Services
 {
     /// <summary>
     /// IAvoidDuplicateCrossCuttingConcerns
