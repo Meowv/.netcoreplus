@@ -4,6 +4,7 @@ using Plus.Dependency;
 using Plus.Domain.Uow;
 using Plus.Event.Bus;
 using Plus.Modules;
+using Plus.Runtime.Validation.Interception;
 using System;
 using System.IO;
 using System.Linq.Expressions;

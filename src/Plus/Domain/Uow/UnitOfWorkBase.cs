@@ -22,52 +22,26 @@ namespace Plus.Domain.Uow
 
         private Exception _exception;
 
-        public string Id
-        {
-            get;
-        }
+        private int? _tenantId;
+
+        public string Id { get; }
 
         [DoNotWire]
-        public IUnitOfWork Outer
-        {
-            get;
-            set;
-        }
+        public IUnitOfWork Outer { get; set; }
 
-        public UnitOfWorkOptions Options
-        {
-            get;
-            private set;
-        }
+        public UnitOfWorkOptions Options { get; private set; }
 
         public IReadOnlyList<DataFilterConfiguration> Filters => _filters.ToImmutableList();
 
-        public Dictionary<string, object> Items
-        {
-            get;
-            set;
-        }
+        public Dictionary<string, object> Items { get; set; }
 
-        protected IUnitOfWorkDefaultOptions DefaultOptions
-        {
-            get;
-        }
+        protected IUnitOfWorkDefaultOptions DefaultOptions { get; }
 
-        protected IConnectionStringResolver ConnectionStringResolver
-        {
-            get;
-        }
+        protected IConnectionStringResolver ConnectionStringResolver { get; }
 
-        public bool IsDisposed
-        {
-            get;
-            private set;
-        }
+        public bool IsDisposed { get; private set; }
 
-        protected IUnitOfWorkFilterExecuter FilterExecuter
-        {
-            get;
-        }
+        protected IUnitOfWorkFilterExecuter FilterExecuter{ get; }
 
         public event EventHandler Completed;
 
@@ -210,6 +184,7 @@ namespace Plus.Domain.Uow
 
         protected virtual void BeginUow()
         {
+
         }
 
         protected abstract void CompleteUow();
@@ -257,7 +232,7 @@ namespace Plus.Domain.Uow
         {
             if (_isBeginCalledBefore)
             {
-                throw new UPrimeException("This unit of work has started before. Can not call Start method more than once.");
+                throw new PlusException("This unit of work has started before. Can not call Start method more than once.");
             }
             _isBeginCalledBefore = true;
         }
@@ -266,32 +241,19 @@ namespace Plus.Domain.Uow
         {
             if (_isCompleteCalledBefore)
             {
-                throw new UPrimeException("Complete is called before!");
+                throw new PlusException("Complete is called before!");
             }
             _isCompleteCalledBefore = true;
         }
 
         private void SetFilters(List<DataFilterConfiguration> filterOverrides)
         {
-            int i;
-            for (i = 0; i < _filters.Count; i++)
+            for (var i = 0; i < _filters.Count; i++)
             {
-                DataFilterConfiguration dataFilterConfiguration = filterOverrides.FirstOrDefault((DataFilterConfiguration f) => f.FilterName == _filters[i].FilterName);
-                if (dataFilterConfiguration != null)
+                var filterOverride = filterOverrides.FirstOrDefault(f => f.FilterName == _filters[i].FilterName);
+                if (filterOverride != null)
                 {
-                    _filters[i] = dataFilterConfiguration;
-                }
-            }
-        }
-
-        private void ChangeFilterIsEnabledIfNotOverrided(List<DataFilterConfiguration> filterOverrides, string filterName, bool isEnabled)
-        {
-            if (!filterOverrides.Any((DataFilterConfiguration f) => f.FilterName == filterName))
-            {
-                int num = _filters.FindIndex((DataFilterConfiguration f) => f.FilterName == filterName);
-                if (num >= 0 && _filters[num].IsEnabled != isEnabled)
-                {
-                    _filters[num] = new DataFilterConfiguration(filterName, isEnabled);
+                    _filters[i] = filterOverride;
                 }
             }
         }
@@ -301,7 +263,7 @@ namespace Plus.Domain.Uow
             DataFilterConfiguration dataFilterConfiguration = _filters.FirstOrDefault((DataFilterConfiguration f) => f.FilterName == filterName);
             if (dataFilterConfiguration == null)
             {
-                throw new UPrimeException("Unknown filter name: " + filterName + ". Be sure this filter is registered before.");
+                throw new PlusException("Unknown filter name: " + filterName + ". Be sure this filter is registered before.");
             }
             return dataFilterConfiguration;
         }
@@ -311,7 +273,7 @@ namespace Plus.Domain.Uow
             int num = _filters.FindIndex((DataFilterConfiguration f) => f.FilterName == filterName);
             if (num < 0)
             {
-                throw new UPrimeException("Unknown filter name: " + filterName + ". Be sure this filter is registered before.");
+                throw new PlusException("Unknown filter name: " + filterName + ". Be sure this filter is registered before.");
             }
             return num;
         }
@@ -319,6 +281,45 @@ namespace Plus.Domain.Uow
         public override string ToString()
         {
             return "[UnitOfWork " + Id + "]";
+        }
+
+        public virtual IDisposable SetTenantId(int? tenantId)
+        {
+            return SetTenantId(tenantId, true);
+        }
+
+        public virtual IDisposable SetTenantId(int? tenantId, bool switchMustHaveTenantEnableDisable)
+        {
+            var oldTenantId = _tenantId;
+            _tenantId = tenantId;
+
+            IDisposable mustHaveTenantEnableChange;
+            if (switchMustHaveTenantEnableDisable)
+            {
+                mustHaveTenantEnableChange = tenantId == null
+                    ? DisableFilter(PlusDataFilters.MustHaveTenant)
+                    : EnableFilter(PlusDataFilters.MustHaveTenant);
+            }
+            else
+            {
+                mustHaveTenantEnableChange = NullDisposable.Instance;
+            }
+
+            var mayHaveTenantChange = SetFilterParameter(PlusDataFilters.MayHaveTenant, PlusDataFilters.Parameters.TenantId, tenantId);
+            var mustHaveTenantChange = SetFilterParameter(PlusDataFilters.MustHaveTenant, PlusDataFilters.Parameters.TenantId, tenantId ?? 0);
+
+            return new DisposeAction(() =>
+            {
+                mayHaveTenantChange.Dispose();
+                mustHaveTenantChange.Dispose();
+                mustHaveTenantEnableChange.Dispose();
+                _tenantId = oldTenantId;
+            });
+        }
+
+        public int? GetTenantId()
+        {
+            return _tenantId;
         }
     }
 }
