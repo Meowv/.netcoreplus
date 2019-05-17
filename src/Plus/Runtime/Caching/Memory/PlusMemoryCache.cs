@@ -7,7 +7,7 @@ namespace Plus.Runtime.Caching.Memory
     /// <summary>
     /// Implements <see cref="ICache"/> to work with <see cref="MemoryCache"/>.
     /// </summary>
-    public class AbpMemoryCache : CacheBase
+    public class PlusMemoryCache : CacheBase
     {
         private MemoryCache _memoryCache;
 
@@ -15,7 +15,7 @@ namespace Plus.Runtime.Caching.Memory
         /// Constructor.
         /// </summary>
         /// <param name="name">Unique name of the cache</param>
-        public AbpMemoryCache(string name)
+        public PlusMemoryCache(string name)
             : base(name)
         {
             _memoryCache = new MemoryCache(new OptionsWrapper<MemoryCacheOptions>(new MemoryCacheOptions()));

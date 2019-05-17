@@ -7,14 +7,14 @@ namespace Plus.Runtime.Caching.Memory
     /// <summary>
     /// Implements <see cref="ICacheManager"/> to work with MemoryCache.
     /// </summary>
-    public class AbpMemoryCacheManager : CacheManagerBase
+    public class PlusMemoryCacheManager : CacheManagerBase
     {
         public ILogger Logger { get; set; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        public AbpMemoryCacheManager(IIocManager iocManager, ICachingConfiguration configuration)
+        public PlusMemoryCacheManager(IIocManager iocManager, ICachingConfiguration configuration)
             : base(iocManager, configuration)
         {
             Logger = NullLogger.Instance;
@@ -22,7 +22,7 @@ namespace Plus.Runtime.Caching.Memory
 
         protected override ICache CreateCacheImplementation(string name)
         {
-            return new AbpMemoryCache(name)
+            return new PlusMemoryCache(name)
             {
                 Logger = Logger
             };
