@@ -60,7 +60,7 @@ namespace Plus.Runtime.Caching
             var value = await cache.GetAsync(key.ToString(), async (keyAsString) =>
             {
                 var v = await factory(key);
-                return (object)v;
+                return v;
             });
 
             return (TValue)value;
@@ -73,7 +73,7 @@ namespace Plus.Runtime.Caching
                 return cache.GetAsync(key.ToString(), async (keyAsString) =>
                 {
                     var v = await factory(key);
-                    return (object)v;
+                    return v;
                 });
             });
             var values = await Task.WhenAll(tasks);
@@ -96,7 +96,7 @@ namespace Plus.Runtime.Caching
             var value = cache.GetOrDefault(key.ToString());
             if (value == null)
             {
-                return default(TValue);
+                return default;
             }
 
             return (TValue)value;
@@ -109,7 +109,7 @@ namespace Plus.Runtime.Caching
                 var value = cache.GetOrDefault(key.ToString());
                 if (value == null)
                 {
-                    return default(TValue);
+                    return default;
                 }
                 return (TValue)value;
             });
@@ -122,7 +122,7 @@ namespace Plus.Runtime.Caching
             var value = await cache.GetOrDefaultAsync(key.ToString());
             if (value == null)
             {
-                return default(TValue);
+                return default;
             }
 
             return (TValue)value;
@@ -135,7 +135,7 @@ namespace Plus.Runtime.Caching
                 var value = await cache.GetOrDefaultAsync(key.ToString());
                 if (value == null)
                 {
-                    return default(TValue);
+                    return default;
                 }
                 return (TValue)value;
             });
