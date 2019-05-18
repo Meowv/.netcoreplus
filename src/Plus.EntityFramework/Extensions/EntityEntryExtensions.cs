@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace Plus.EntityFramework.Extensions
 {
+    /// <summary>
+    /// EntityEntryExtensions
+    /// </summary>
     public static class EntityEntryExtensions
     {
         /// <summary>

@@ -8,7 +8,7 @@ namespace Plus.Reflection
     /// <summary>
     /// 反射帮助类
     /// </summary>
-    internal static class ReflectionHelper
+    public static class ReflectionHelper
     {
         /// <summary>
         /// Checks whether <paramref name="givenType"/> implements/inherits <paramref name="genericType"/>.
@@ -130,7 +130,7 @@ namespace Plus.Reflection
         /// <param name="memberInfo">MemberInfo</param>
         /// <param name="defaultValue">Default value (null as default)</param>
         /// <param name="inherit">Inherit attribute from base classes</param>
-        public static TAttribute GetSingleAttributeOfMemberOrDeclaringTypeOrDefault<TAttribute>(MemberInfo memberInfo, TAttribute defaultValue = default(TAttribute), bool inherit = true)
+        public static TAttribute GetSingleAttributeOfMemberOrDeclaringTypeOrDefault<TAttribute>(MemberInfo memberInfo, TAttribute defaultValue = default, bool inherit = true)
             where TAttribute : class
         {
             return memberInfo.GetCustomAttributes(true).OfType<TAttribute>().FirstOrDefault()

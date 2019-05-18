@@ -29,6 +29,14 @@ namespace Plus.Dependency
         T[] ResolveAll<T>();
 
         /// <summary>
+        /// 从IOC容器中获取对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        T Resolve<T>(Type type);
+
+        /// <summary>
         /// 是否注册了给定的类型
         /// </summary>
         /// <typeparam name="T"></typeparam>
