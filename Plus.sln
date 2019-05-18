@@ -31,7 +31,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.RedisCache", "src\Plus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Dapper", "src\Plus.Dapper\Plus.Dapper.csproj", "{33696E1A-23DA-4FF2-9DD9-2FA8C6822606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Extensions.Serialization", "Plus.Extensions.Serialization\Plus.Extensions.Serialization.csproj", "{209BF4EB-311F-45AD-AED6-F314A49D83C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Extensions.Serialization", "src\Plus.Extensions.Serialization\Plus.Extensions.Serialization.csproj", "{209BF4EB-311F-45AD-AED6-F314A49D83C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
