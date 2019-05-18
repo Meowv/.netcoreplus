@@ -29,9 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.MongoDB", "src\Plus.Mo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.RedisCache", "src\Plus.RedisCache\Plus.RedisCache.csproj", "{BBCB7D18-8BA5-461A-B3B2-3E9A79EDA6FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Dapper", "src\Plus.Dapper\Plus.Dapper.csproj", "{33696E1A-23DA-4FF2-9DD9-2FA8C6822606}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Extensions.Serialization", "src\Plus.Extensions.Serialization\Plus.Extensions.Serialization.csproj", "{209BF4EB-311F-45AD-AED6-F314A49D83C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Extensions.Serialization", "src\Plus.Extensions.Serialization\Plus.Extensions.Serialization.csproj", "{209BF4EB-311F-45AD-AED6-F314A49D83C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +65,6 @@ Global
 		{BBCB7D18-8BA5-461A-B3B2-3E9A79EDA6FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBCB7D18-8BA5-461A-B3B2-3E9A79EDA6FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBCB7D18-8BA5-461A-B3B2-3E9A79EDA6FB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33696E1A-23DA-4FF2-9DD9-2FA8C6822606}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33696E1A-23DA-4FF2-9DD9-2FA8C6822606}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33696E1A-23DA-4FF2-9DD9-2FA8C6822606}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33696E1A-23DA-4FF2-9DD9-2FA8C6822606}.Release|Any CPU.Build.0 = Release|Any CPU
 		{209BF4EB-311F-45AD-AED6-F314A49D83C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{209BF4EB-311F-45AD-AED6-F314A49D83C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{209BF4EB-311F-45AD-AED6-F314A49D83C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,7 +81,6 @@ Global
 		{F4631747-89D2-4EA8-8684-9217D463D4C6} = {CC63505F-AC28-4DCE-93F6-82062FA5EDC3}
 		{289760B5-2E69-4D9F-8F1F-2D80EA1FC36D} = {CC63505F-AC28-4DCE-93F6-82062FA5EDC3}
 		{BBCB7D18-8BA5-461A-B3B2-3E9A79EDA6FB} = {CC63505F-AC28-4DCE-93F6-82062FA5EDC3}
-		{33696E1A-23DA-4FF2-9DD9-2FA8C6822606} = {CC63505F-AC28-4DCE-93F6-82062FA5EDC3}
 		{209BF4EB-311F-45AD-AED6-F314A49D83C7} = {CC63505F-AC28-4DCE-93F6-82062FA5EDC3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
