@@ -3,7 +3,7 @@
     /// <summary>
     /// UnitOfWorkExtensionDataTypes
     /// </summary>
-    internal class UnitOfWorkExtensionDataTypes
+    public class UnitOfWorkExtensionDataTypes
     {
         public static string HardDelete { get; } = "HardDelete";
     }
