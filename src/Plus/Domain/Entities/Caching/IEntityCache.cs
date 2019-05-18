@@ -1,7 +1,7 @@
 ﻿using Plus.Runtime.Caching;
 using System.Threading.Tasks;
 
-namespace Plus.Domain.Caching
+namespace Plus.Domain.Entities.Caching
 {
     /// <summary>
     /// IEntityCache

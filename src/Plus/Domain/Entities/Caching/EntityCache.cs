@@ -1,13 +1,17 @@
-﻿using Plus.Domain.Entities;
-using Plus.Domain.Repositories;
+﻿using Plus.Domain.Repositories;
 using Plus.Event.Bus.Entities;
 using Plus.Event.Bus.Handlers;
 using Plus.ObjectMapping;
 using Plus.Runtime.Caching;
 using System.Threading.Tasks;
 
-namespace Plus.Domain.Caching
+namespace Plus.Domain.Entities.Caching
 {
+    /// <summary>
+    /// EntityCache
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TCacheItem"></typeparam>
     public class EntityCache<TEntity, TCacheItem> :
         EntityCache<TEntity, TCacheItem, int>,
         IEntityCache<TCacheItem>
