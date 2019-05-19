@@ -5,7 +5,6 @@ namespace Plus.RedisCache
 {
     /// <summary>
     /// (De)Serialize
-    /// 来自Redis缓存的对象
     /// </summary>
     public interface IRedisCacheSerializer
     {

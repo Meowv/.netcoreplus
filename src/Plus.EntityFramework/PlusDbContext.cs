@@ -123,7 +123,7 @@ namespace Plus.EntityFramework
         {
             try
             {
-                var changeReport = ApplyAbpConcepts();
+                var changeReport = ApplyPlusConcepts();
                 var result = base.SaveChanges();
                 EntityChangeEventHelper.TriggerEvents(changeReport);
                 return result;
@@ -138,7 +138,7 @@ namespace Plus.EntityFramework
         {
             try
             {
-                var changeReport = ApplyAbpConcepts();
+                var changeReport = ApplyPlusConcepts();
                 var result = await base.SaveChangesAsync(cancellationToken);
                 await EntityChangeEventHelper.TriggerEventsAsync(changeReport);
                 return result;
@@ -149,7 +149,7 @@ namespace Plus.EntityFramework
             }
         }
 
-        protected virtual EntityChangeReport ApplyAbpConcepts()
+        protected virtual EntityChangeReport ApplyPlusConcepts()
         {
             var changeReport = new EntityChangeReport();
 
@@ -162,13 +162,13 @@ namespace Plus.EntityFramework
                     Entry(entry.Entity).State = EntityState.Modified;
                 }
 
-                ApplyAbpConcepts(entry, userId, changeReport);
+                ApplyPlusConcepts(entry, userId, changeReport);
             }
 
             return changeReport;
         }
 
-        protected virtual void ApplyAbpConcepts(EntityEntry entry, long? userId, EntityChangeReport changeReport)
+        protected virtual void ApplyPlusConcepts(EntityEntry entry, long? userId, EntityChangeReport changeReport)
         {
             switch (entry.State)
             {

@@ -55,10 +55,9 @@ namespace Plus.EntityFramework
 
             if (dbContextTypes.IsNullOrEmpty())
             {
-                Logger.Warn("No class found derived from AbpDbContext.");
+                Logger.Warn("No class found derived from PlusDbContext.");
                 return;
             }
-
 
             foreach (var dbContextType in dbContextTypes)
             {
