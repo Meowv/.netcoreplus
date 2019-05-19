@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Plus.Extensions.Serialization;
+using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -80,5 +82,34 @@ public static class Extensions
         XmlSerializer xmlSerializer = new XmlSerializer(typeof(T));
         StringReader textReader = new StringReader(@this);
         return (T)xmlSerializer.Deserialize(textReader);
+    }
+
+    public static string SerializeWithType(this object obj)
+    {
+        return SerializeWithType(obj, obj.GetType());
+    }
+
+    public static string SerializeWithType(this object obj, Type type)
+    {
+        return $"{type.AssemblyQualifiedName}{'|'}{obj.SerializeToJson()}";
+    }
+
+    public static T DeserializeWithType<T>(this string serializedObj)
+    {
+        return (T)DeserializeWithType(serializedObj);
+    }
+
+    public static object DeserializeWithType(this string serializedObj)
+    {
+        int typeSeperatorIndex = serializedObj.IndexOf('|');
+
+        var type = Type.GetType(serializedObj.Substring(0, typeSeperatorIndex));
+
+        string value = serializedObj.Substring(typeSeperatorIndex + 1);
+
+        var settings = new JsonSerializerSettings();
+        settings.Converters.Insert(0, new DataTimeConverter());
+
+        return JsonConvert.DeserializeObject(value, type, settings);
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 namespace Plus.Runtime.Caching
 {
     /// <summary>
-    /// Base class for cache managers.
+    /// 缓存管理
     /// </summary>
     public abstract class CacheManagerBase : ICacheManager, ISingletonDependency
     {
@@ -18,11 +18,6 @@ namespace Plus.Runtime.Caching
 
         protected readonly ConcurrentDictionary<string, ICache> Caches;
 
-        /// <summary>
-        /// Constructor.
-        /// </summary>
-        /// <param name="iocManager"></param>
-        /// <param name="configuration"></param>
         protected CacheManagerBase(IIocManager iocManager, ICachingConfiguration configuration)
         {
             IocManager = iocManager;
@@ -67,10 +62,10 @@ namespace Plus.Runtime.Caching
         }
 
         /// <summary>
-        /// Used to create actual cache implementation.
+        /// 用于创建实际的缓存实现
         /// </summary>
-        /// <param name="name">Name of the cache</param>
-        /// <returns>Cache object</returns>
+        /// <param name="name">缓存名称</param>
+        /// <returns></returns>
         protected abstract ICache CreateCacheImplementation(string name);
     }
 }
