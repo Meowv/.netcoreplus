@@ -3,16 +3,18 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Copyright>https://meowv.com</Copyright>
     <Authors>阿星Plus</Authors>
     <Company>https://meowv.com</Company>
     <Product>Plus.EntityFramework</Product>
+    <Title>Plus.EntityFramework - .netcoreplus</Title>
     <Description>.netcoreplus(Plus.EntityFramework) - .NET Core 简易版快速开发框架</Description>
     <RepositoryUrl>https://github.com/Meowv/.netcoreplus</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/Meowv/.netcoreplus</PackageProjectUrl>
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/13010050</PackageIconUrl>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/Meowv/.netcoreplus/master/LICENSE</PackageLicenseUrl>
     <PackageTags>plus;plus.entityframework;.netcoreplus;</PackageTags>
     <PackageReleaseNotes>Plus.EntityFramework</PackageReleaseNotes>
     <Version>1.0.0</Version>
