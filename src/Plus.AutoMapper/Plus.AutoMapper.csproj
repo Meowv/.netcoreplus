@@ -2,6 +2,24 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>https://meowv.com</Copyright>
+    <Authors>阿星Plus</Authors>
+    <Company>https://meowv.com</Company>
+    <Product>Plus.AutoMapper</Product>
+    <Description>.netcoreplus(Plus.AutoMapper) - .NET Core 简易版快速开发框架</Description>
+    <RepositoryUrl>https://github.com/Meowv/.netcoreplus</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Meowv/.netcoreplus</PackageProjectUrl>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/13010050</PackageIconUrl>
+    <PackageTags>plus;plus.automapper;.netcoreplus;</PackageTags>
+    <PackageReleaseNotes>Plus.AutoMapper</PackageReleaseNotes>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>Plus.AutoMapper.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
