@@ -16,6 +16,11 @@ namespace Plus.Configuration.Startup
         IIocManager IocManager { get; }
 
         /// <summary>
+        /// DefaultSettings
+        /// </summary>
+        DefaultSettings DefaultSettings { get; }
+
+        /// <summary>
         /// 用于替换服务类型
         /// </summary>
         /// <param name="type"></param>

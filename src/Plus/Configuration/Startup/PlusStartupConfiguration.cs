@@ -21,6 +21,8 @@ namespace Plus.Configuration.Startup
 
         public IValidationConfiguration Validation { get; private set; }
 
+        public DefaultSettings DefaultSettings { get; private set; }
+
         public PlusStartupConfiguration(IIocManager iocManager)
         {
             IocManager = iocManager;
