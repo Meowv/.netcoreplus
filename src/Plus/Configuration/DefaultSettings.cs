@@ -2,6 +2,9 @@
 {
     public class DefaultSettings : SettingsBase
     {
-        public string DefaultNameOrConnectionString => Config["ConnectionStrings"];
+        public string GetDefaultNameOrConnectionString()
+        {
+            return Config["DefaultNameOrConnectionString"];
+        }
     }
 }

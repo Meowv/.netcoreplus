@@ -17,7 +17,7 @@ namespace Plus.Domain.Uow
 
         public virtual string GetNameOrConnectionString(ConnectionStringResolveArgs args)
         {
-            string defaultNameOrConnectionString = _configuration.DefaultSettings.DefaultNameOrConnectionString;
+            string defaultNameOrConnectionString = _configuration.DefaultSettings.GetDefaultNameOrConnectionString();
             if (!string.IsNullOrWhiteSpace(defaultNameOrConnectionString))
             {
                 return defaultNameOrConnectionString;
