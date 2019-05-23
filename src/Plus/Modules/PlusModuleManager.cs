@@ -67,7 +67,7 @@ namespace Plus.Modules
             Logger.Debug("找到 " + moduleTypes.Count + " 个模块.");
 
             RegisterModules(moduleTypes);
-            CreateModules(moduleTypes, moduleTypes);
+            CreateModules(moduleTypes);
 
             _modules.EnsureKernelModuleToBeFirst();
             _modules.EnsureStartupModuleToBeLast();
@@ -82,7 +82,7 @@ namespace Plus.Modules
             return PlusModule.FindDependedModuleTypesRecursivelyIncludingGivenModule(_modules.StartupModuleType);
         }
 
-        private void CreateModules(ICollection<Type> moduleTypes, List<Type> plugInModuleTypes)
+        private void CreateModules(ICollection<Type> moduleTypes)
         {
             foreach (var moduleType in moduleTypes)
             {
@@ -94,7 +94,7 @@ namespace Plus.Modules
                 moduleObject.IocManager = _iocManager;
                 moduleObject.Configuration = _iocManager.Resolve<IPlusStartupConfiguration>();
 
-                var moduleInfo = new PlusModuleInfo(moduleType, moduleObject, plugInModuleTypes.Contains(moduleType));
+                var moduleInfo = new PlusModuleInfo(moduleType, moduleObject);
 
                 _modules.Add(moduleInfo);
 

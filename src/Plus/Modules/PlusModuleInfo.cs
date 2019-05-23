@@ -27,16 +27,6 @@ namespace Plus.Modules
             Dependencies = new List<PlusModuleInfo>();
         }
 
-        public PlusModuleInfo(Type type, PlusModule instance, bool isLoadedAsPlugIn)
-        {
-            Type = type;
-            Instance = instance;
-            IsLoadedAsPlugIn = isLoadedAsPlugIn;
-            Assembly = Type.GetTypeInfo().Assembly;
-
-            Dependencies = new List<PlusModuleInfo>();
-        }
-
         public override string ToString()
         {
             return Type.AssemblyQualifiedName ?? Type.FullName;

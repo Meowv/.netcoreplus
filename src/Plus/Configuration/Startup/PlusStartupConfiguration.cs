@@ -23,9 +23,10 @@ namespace Plus.Configuration.Startup
 
         public DefaultSettings DefaultSettings { get; private set; }
 
-        public PlusStartupConfiguration(IIocManager iocManager)
+        public PlusStartupConfiguration(IIocManager iocManager, DefaultSettings settings)
         {
             IocManager = iocManager;
+            DefaultSettings = settings;
         }
 
         public void Initialize()
