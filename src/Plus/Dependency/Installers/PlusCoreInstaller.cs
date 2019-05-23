@@ -1,6 +1,7 @@
 ﻿using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
+using Plus.Configuration;
 using Plus.Configuration.Startup;
 using Plus.Domain.Uow;
 using Plus.Modules;
@@ -17,6 +18,7 @@ namespace Plus.Dependency.Installers
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
             container.Register(
+                Component.For<DefaultSettings>().ImplementedBy<DefaultSettings>().LifestyleSingleton(),
                 Component.For<IUnitOfWorkDefaultOptions, UnitOfWorkDefaultOptions>().ImplementedBy<UnitOfWorkDefaultOptions>().LifestyleSingleton(),
                 Component.For<IPlusStartupConfiguration, PlusStartupConfiguration>().ImplementedBy<PlusStartupConfiguration>().LifestyleSingleton(),
                 Component.For<IPlusModuleManager, PlusModuleManager>().ImplementedBy<PlusModuleManager>().LifestyleSingleton(),

@@ -57,7 +57,7 @@ namespace Plus
             try
             {
                 RegisterStarter();
-                _logger.Debug("PlusStarter 初始化.");
+                _logger.Debug("PlusStarter 开始初始化.");
                 PlusEngine.Instance.IocManager.IocContainer.Install(new PlusCoreInstaller());
                 PlusEngine.Instance.PostInitialize();
                 IocManager.Resolve<PlusStartupConfiguration>().Initialize();

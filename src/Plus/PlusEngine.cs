@@ -1,10 +1,11 @@
 ﻿using Castle.Core.Logging;
+using Plus.Configuration;
 using Plus.Dependency;
 
 namespace Plus
 {
     /// <summary>
-    /// PlusEngine
+    /// 注入引擎
     /// </summary>
     public class PlusEngine
     {
@@ -13,6 +14,8 @@ namespace Plus
         public IIocManager IocManager { get; private set; }
 
         public ILogger Logger { get; private set; }
+
+        public DefaultSettings DefaultSettings { get; private set; }
 
         public static PlusEngine Instance { get; private set; }
 
@@ -30,14 +33,14 @@ namespace Plus
                 _initialized = true;
                 return;
             }
-            throw new PlusException("PlusEngine 初始化");
+            throw new PlusException("PlusEngine 未初始化成功！");
         }
 
         public void PostInitialize()
         {
             if (_initialized)
             {
-
+                DefaultSettings = Resolve<DefaultSettings>();
             }
         }
 
