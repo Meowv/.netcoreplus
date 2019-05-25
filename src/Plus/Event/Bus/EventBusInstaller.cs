@@ -2,7 +2,6 @@
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using Plus.Configuration.Startup;
 using Plus.Dependency;
 using Plus.Event.Bus.Factories;
 using Plus.Event.Bus.Handlers;
@@ -16,29 +15,18 @@ namespace Plus.Event.Bus
     internal class EventBusInstaller : IWindsorInstaller
     {
         private readonly IIocResolver _iocResolver;
-        private readonly IEventBusConfiguration _eventBusConfiguration;
         private IEventBus _eventBus;
 
         public EventBusInstaller(IIocResolver iocResolver)
         {
             _iocResolver = iocResolver;
-            _eventBusConfiguration = iocResolver.Resolve<IEventBusConfiguration>();
         }
 
         public void Install(IWindsorContainer container, IConfigurationStore store)
         {
-            if (_eventBusConfiguration.UseDefaultEventBus)
-            {
-                container.Register(
-                    Component.For<IEventBus>().Instance(EventBus.Default).LifestyleSingleton()
-                );
-            }
-            else
-            {
-                container.Register(
-                    Component.For<IEventBus>().ImplementedBy<EventBus>().LifestyleSingleton()
-                    );
-            }
+            container.Register(
+                Component.For<IEventBus>().Instance(EventBus.Default).LifestyleSingleton()
+            );
 
             _eventBus = container.Resolve<IEventBus>();
 

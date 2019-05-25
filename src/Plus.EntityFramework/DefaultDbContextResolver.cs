@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Castle.MicroKernel.Resolvers;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Plus.Dependency;
 using Plus.EntityFramework.Configuration;
@@ -41,12 +42,15 @@ namespace Plus.EntityFramework
             {
                 if (isAbstractDbContext)
                 {
-                    return (TDbContext)_iocResolver.Resolve(concreteType);
+                    return (TDbContext)_iocResolver.Resolve(concreteType, new
+                    {
+                        options = CreateOptionsForType(concreteType, connectionString, existingConnection)
+                    });
                 }
 
                 return _iocResolver.Resolve<TDbContext>(concreteType);
             }
-            catch (Castle.MicroKernel.Resolvers.DependencyResolverException ex)
+            catch (DependencyResolverException ex)
             {
                 var hasOptions = isAbstractDbContext ? HasOptions(concreteType) : HasOptions(dbContextType);
                 if (!hasOptions)

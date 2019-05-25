@@ -17,7 +17,7 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/Meowv/.netcoreplus/master/LICENSE</PackageLicenseUrl>
     <PackageTags>plus;.netcoreplus;</PackageTags>
     <PackageReleaseNotes>Plus</PackageReleaseNotes>
-    <Version>1.0.3.2</Version>
+    <Version>1.0.3.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <PackageReference Include="Castle.Core" Version="4.4.0" />
-    <PackageReference Include="Castle.Windsor" Version="5.0.0" />
+    <PackageReference Include="Castle.Windsor" Version="4.0.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />

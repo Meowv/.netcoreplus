@@ -17,7 +17,7 @@
     <PackageLicenseUrl>https://raw.githubusercontent.com/Meowv/.netcoreplus/master/LICENSE</PackageLicenseUrl>
     <PackageTags>plus;plus.entityframework;.netcoreplus;</PackageTags>
     <PackageReleaseNotes>Plus.EntityFramework</PackageReleaseNotes>
-    <Version>1.0.0.2</Version>
+    <Version>1.0.0.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

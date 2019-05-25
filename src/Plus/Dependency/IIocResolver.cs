@@ -24,17 +24,25 @@ namespace Plus.Dependency
         /// <summary>
         /// 从IOC容器中获取对象
         /// </summary>
-        /// <typeparam name="T"></typeparam>
+        /// <param name="type"></param>
+        /// <param name="argumentsAsAnonymousType"></param>
         /// <returns></returns>
-        T[] ResolveAll<T>();
+        object Resolve(Type type, object argumentsAsAnonymousType);
 
         /// <summary>
         /// 从IOC容器中获取对象
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="type"></param>
+        /// <param name="argumentsAsAnonymousType"></param>
         /// <returns></returns>
-        T Resolve<T>(Type type);
+        T Resolve<T>(object argumentsAsAnonymousType);
+
+        /// <summary>
+        /// 从IOC容器中获取对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        T[] ResolveAll<T>();
 
         /// <summary>
         /// 是否注册了给定的类型
