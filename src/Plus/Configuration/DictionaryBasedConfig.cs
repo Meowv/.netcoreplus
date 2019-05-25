@@ -24,7 +24,7 @@ namespace Plus.Configuration
         public T Get<T>(string name)
         {
             object obj = this[name];
-            return (obj == null) ? default(T) : ((T)Convert.ChangeType(obj, typeof(T)));
+            return (obj == null) ? default : ((T)Convert.ChangeType(obj, typeof(T)));
         }
 
         public void Set<T>(string name, T value)

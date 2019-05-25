@@ -10,11 +10,7 @@ namespace Plus.Event
     {
         private readonly ISubscriptionService _subscriptionService;
 
-        public ILogger Logger
-        {
-            get;
-            set;
-        }
+        public ILogger Logger { get; set; }
 
         public EventPublisher(ISubscriptionService subscriptionService)
         {

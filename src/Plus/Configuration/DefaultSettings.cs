@@ -4,7 +4,7 @@
     {
         public string GetDefaultNameOrConnectionString()
         {
-            return Config["DefaultNameOrConnectionString"] ?? "";
+            return Config["DefaultNameOrConnectionString"];
         }
     }
 }
