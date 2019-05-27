@@ -14,13 +14,19 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/Meowv/.netcoreplus</PackageProjectUrl>
     <PackageIconUrl>https://avatars2.githubusercontent.com/u/13010050</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/Meowv/.netcoreplus/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageTags>plus;plus.extensions;.netcoreplus;</PackageTags>
     <PackageReleaseNotes>Plus.Extensions</PackageReleaseNotes>
-    <Version>1.0.0</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>Plus.Extensions.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
     <DocumentationFile>Plus.Extensions.xml</DocumentationFile>
   </PropertyGroup>
 
