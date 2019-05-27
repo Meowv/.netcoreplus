@@ -15,20 +15,20 @@ namespace Plus.CodeAnnotations
         /// <returns></returns>
         public static string ToAlias(this Enum _enum)
         {
-            Type type = _enum.GetType();
-            FieldInfo field = type.GetField(_enum.ToString());
+            var type = _enum.GetType();
+            var field = type.GetField(_enum.ToString());
             if (field == null)
             {
                 return string.Empty;
             }
 
-            string result = string.Empty;
+            var result = string.Empty;
 
-            object[] customAttributes = field.GetCustomAttributes(typeof(EnumAliasAttribute), inherit: false);
-            object[] array = customAttributes;
+            var customAttributes = field.GetCustomAttributes(typeof(EnumAliasAttribute), inherit: false);
+            var array = customAttributes;
             for (int i = 0; i < array.Length; i++)
             {
-                EnumAliasAttribute enumAliasAttribute = (EnumAliasAttribute)array[i];
+                var enumAliasAttribute = (EnumAliasAttribute)array[i];
                 result = enumAliasAttribute.Alias;
             }
             return result;

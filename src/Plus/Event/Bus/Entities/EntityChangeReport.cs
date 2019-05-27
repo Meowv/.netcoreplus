@@ -4,15 +4,9 @@ namespace Plus.Event.Bus.Entities
 {
     public class EntityChangeReport
     {
-        public List<EntityChangeEntry> ChangedEntities
-        {
-            get;
-        }
+        public List<EntityChangeEntry> ChangedEntities { get; }
 
-        public List<DomainEventEntry> DomainEvents
-        {
-            get;
-        }
+        public List<DomainEventEntry> DomainEvents { get; }
 
         public EntityChangeReport()
         {

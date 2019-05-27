@@ -22,8 +22,6 @@ namespace Plus.Domain.Uow
 
         private Exception _exception;
 
-        private int? _tenantId;
-
         public string Id { get; }
 
         [DoNotWire]
@@ -41,7 +39,7 @@ namespace Plus.Domain.Uow
 
         public bool IsDisposed { get; private set; }
 
-        protected IUnitOfWorkFilterExecuter FilterExecuter{ get; }
+        protected IUnitOfWorkFilterExecuter FilterExecuter { get; }
 
         public event EventHandler Completed;
 
@@ -148,7 +146,7 @@ namespace Plus.Domain.Uow
             catch (Exception exception)
             {
                 Exception ex = _exception = exception;
-                throw;
+                throw ex;
             }
         }
 
@@ -164,7 +162,7 @@ namespace Plus.Domain.Uow
             catch (Exception exception)
             {
                 Exception ex = _exception = exception;
-                throw;
+                throw ex;
             }
         }
 
@@ -281,45 +279,6 @@ namespace Plus.Domain.Uow
         public override string ToString()
         {
             return "[UnitOfWork " + Id + "]";
-        }
-
-        public virtual IDisposable SetTenantId(int? tenantId)
-        {
-            return SetTenantId(tenantId, true);
-        }
-
-        public virtual IDisposable SetTenantId(int? tenantId, bool switchMustHaveTenantEnableDisable)
-        {
-            var oldTenantId = _tenantId;
-            _tenantId = tenantId;
-
-            IDisposable mustHaveTenantEnableChange;
-            if (switchMustHaveTenantEnableDisable)
-            {
-                mustHaveTenantEnableChange = tenantId == null
-                    ? DisableFilter(PlusDataFilters.MustHaveTenant)
-                    : EnableFilter(PlusDataFilters.MustHaveTenant);
-            }
-            else
-            {
-                mustHaveTenantEnableChange = NullDisposable.Instance;
-            }
-
-            var mayHaveTenantChange = SetFilterParameter(PlusDataFilters.MayHaveTenant, PlusDataFilters.Parameters.TenantId, tenantId);
-            var mustHaveTenantChange = SetFilterParameter(PlusDataFilters.MustHaveTenant, PlusDataFilters.Parameters.TenantId, tenantId ?? 0);
-
-            return new DisposeAction(() =>
-            {
-                mayHaveTenantChange.Dispose();
-                mustHaveTenantChange.Dispose();
-                mustHaveTenantEnableChange.Dispose();
-                _tenantId = oldTenantId;
-            });
-        }
-
-        public int? GetTenantId()
-        {
-            return _tenantId;
         }
     }
 }

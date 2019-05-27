@@ -28,46 +28,39 @@ namespace Plus.Modules
 
         public List<PlusModuleInfo> GetSortedModuleListByDependency()
         {
-            var sortedModules = this.SortByDependencies(x => x.Dependencies);
-            EnsureKernelModuleToBeFirst(sortedModules);
-            EnsureStartupModuleToBeLast(sortedModules, StartupModuleType);
-            return sortedModules;
+            return this.SortByDependencies((PlusModuleInfo x) => x.Dependencies);
         }
 
-        public static void EnsureKernelModuleToBeFirst(List<PlusModuleInfo> modules)
+        public void EnsureLeadershipToBeFirst()
         {
-            var kernelModuleIndex = modules.FindIndex(m => m.Type == typeof(PlusLeadershipModule));
-            if (kernelModuleIndex <= 0)
-            {
-                return;
-            }
-
-            var kernelModule = modules[kernelModuleIndex];
-            modules.RemoveAt(kernelModuleIndex);
-            modules.Insert(0, kernelModule);
-        }
-
-        public static void EnsureStartupModuleToBeLast(List<PlusModuleInfo> modules, Type startupModuleType)
-        {
-            var startupModuleIndex = modules.FindIndex(m => m.Type == startupModuleType);
-            if (startupModuleIndex >= modules.Count - 1)
-            {
-                return;
-            }
-
-            var startupModule = modules[startupModuleIndex];
-            modules.RemoveAt(startupModuleIndex);
-            modules.Add(startupModule);
-        }
-
-        public void EnsureKernelModuleToBeFirst()
-        {
-            EnsureKernelModuleToBeFirst(this);
+            EnsureLeadershipToBeFirst(this);
         }
 
         public void EnsureStartupModuleToBeLast()
         {
             EnsureStartupModuleToBeLast(this, StartupModuleType);
+        }
+
+        public static void EnsureLeadershipToBeFirst(List<PlusModuleInfo> modules)
+        {
+            int num = modules.FindIndex((PlusModuleInfo x) => x.Type == typeof(PlusLeadershipModule));
+            if (num > 0)
+            {
+                PlusModuleInfo item = modules[num];
+                modules.RemoveAt(num);
+                modules.Insert(0, item);
+            }
+        }
+
+        public static void EnsureStartupModuleToBeLast(List<PlusModuleInfo> modules, Type startupModuleType)
+        {
+            int num = modules.FindIndex((PlusModuleInfo x) => x.Type == startupModuleType);
+            if (num < modules.Count - 1)
+            {
+                PlusModuleInfo item = modules[num];
+                modules.RemoveAt(num);
+                modules.Add(item);
+            }
         }
     }
 }

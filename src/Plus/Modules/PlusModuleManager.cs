@@ -69,7 +69,7 @@ namespace Plus.Modules
             RegisterModules(moduleTypes);
             CreateModules(moduleTypes);
 
-            _modules.EnsureKernelModuleToBeFirst();
+            _modules.EnsureLeadershipToBeFirst();
             _modules.EnsureStartupModuleToBeLast();
 
             SetDependencies();

@@ -60,7 +60,7 @@ namespace Plus.Runtime.Caching
             var value = await cache.GetAsync(key.ToString(), async (keyAsString) =>
             {
                 var v = await factory(key);
-                return v;
+                return (object)v;
             });
 
             return (TValue)value;
@@ -73,7 +73,7 @@ namespace Plus.Runtime.Caching
                 return cache.GetAsync(key.ToString(), async (keyAsString) =>
                 {
                     var v = await factory(key);
-                    return v;
+                    return (object)v;
                 });
             });
             var values = await Task.WhenAll(tasks);

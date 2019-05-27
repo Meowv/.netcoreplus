@@ -1,4 +1,5 @@
 ﻿using Plus.Dependency;
+using Plus.Event.Bus;
 
 namespace Plus.Configuration.Startup
 {

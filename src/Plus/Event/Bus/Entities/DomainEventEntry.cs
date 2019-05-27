@@ -5,15 +5,9 @@ namespace Plus.Event.Bus.Entities
     [Serializable]
     public class DomainEventEntry
     {
-        public object SourceEntity
-        {
-            get;
-        }
+        public object SourceEntity { get; }
 
-        public IEventData EventData
-        {
-            get;
-        }
+        public IEventData EventData { get; }
 
         public DomainEventEntry(object sourceEntity, IEventData eventData)
         {

@@ -8,9 +8,6 @@ namespace Plus.Domain.Entities
     /// </summary>
     public interface IGeneratesDomainEvents
     {
-        ICollection<IEventData> DomainEvents
-        {
-            get;
-        }
+        ICollection<IEventData> DomainEvents { get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plus.Domain.Entities;
+using System;
 
 namespace Plus.Event.Bus.Entities
 {

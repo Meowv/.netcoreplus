@@ -6,12 +6,11 @@ namespace Plus.Domain.Entities.Auditing
     {
         public static void SetCreationAuditProperties(object entityAsObj, long? userId)
         {
-            IHasCreationTime hasCreationTime = entityAsObj as IHasCreationTime;
-            if (hasCreationTime == null)
+            if (!(entityAsObj is IHasCreationTime hasCreationTime))
             {
                 return;
             }
-            if (hasCreationTime.CreationTime == default(DateTime))
+            if (hasCreationTime.CreationTime == default)
             {
                 hasCreationTime.CreationTime = DateTime.Now;
             }

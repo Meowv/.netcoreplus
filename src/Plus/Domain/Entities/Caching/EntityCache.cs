@@ -29,6 +29,12 @@ namespace Plus.Domain.Entities.Caching
         }
     }
 
+    /// <summary>
+    /// EntityCache
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TCacheItem"></typeparam>
+    /// <typeparam name="TPrimaryKey"></typeparam>
     public class EntityCache<TEntity, TCacheItem, TPrimaryKey> :
         IEventHandler<EntityChangedEventData<TEntity>>, IEntityCache<TCacheItem, TPrimaryKey>
         where TEntity : class, IEntity<TPrimaryKey>

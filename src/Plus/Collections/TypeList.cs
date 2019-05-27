@@ -53,67 +53,124 @@ namespace Plus.Collections
             _typeList = new List<Type>();
         }
 
+        /// <summary>
+        /// Add
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public void Add<T>() where T : TBaseType
         {
             _typeList.Add(typeof(T));
         }
 
+        /// <summary>
+        /// Add
+        /// </summary>
+        /// <param name="item"></param>
         public void Add(Type item)
         {
             CheckType(item);
             _typeList.Add(item);
         }
 
+        /// <summary>
+        /// Insert
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="item"></param>
         public void Insert(int index, Type item)
         {
             _typeList.Insert(index, item);
         }
 
+        /// <summary>
+        /// IndexOf
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public int IndexOf(Type item)
         {
             return _typeList.IndexOf(item);
         }
 
+        /// <summary>
+        /// Contains
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public bool Contains<T>() where T : TBaseType
         {
             return Contains(typeof(T));
         }
 
+        /// <summary>
+        /// Contains
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Contains(Type item)
         {
             return _typeList.Contains(item);
         }
 
+        /// <summary>
+        /// Remove
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public void Remove<T>() where T : TBaseType
         {
             _typeList.Remove(typeof(T));
         }
 
+        /// <summary>
+        /// Remove
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Remove(Type item)
         {
             return _typeList.Remove(item);
         }
 
+        /// <summary>
+        /// RemoveAt
+        /// </summary>
+        /// <param name="index"></param>
         public void RemoveAt(int index)
         {
             _typeList.RemoveAt(index);
         }
 
+        /// <summary>
+        /// Clear
+        /// </summary>
         public void Clear()
         {
             _typeList.Clear();
         }
 
+        /// <summary>
+        /// CopyTo
+        /// </summary>
+        /// <param name="array"></param>
+        /// <param name="arrayIndex"></param>
         public void CopyTo(Type[] array, int arrayIndex)
         {
             _typeList.CopyTo(array, arrayIndex);
         }
 
+        /// <summary>
+        /// GetEnumerator
+        /// </summary>
+        /// <returns></returns>
         public IEnumerator<Type> GetEnumerator()
         {
             return _typeList.GetEnumerator();
         }
 
+        /// <summary>
+        /// GetEnumerator
+        /// </summary>
+        /// <returns></returns>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return _typeList.GetEnumerator();

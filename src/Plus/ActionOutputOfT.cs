@@ -1,7 +1,7 @@
 ﻿namespace Plus
 {
     /// <summary>
-    /// 输出 <see cref="T"/>
+    /// ActionOutput
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class ActionOutput<T> : ActionOutput

@@ -10,11 +10,7 @@ namespace Plus.Event.Bus.Entities
     {
         private readonly IUnitOfWorkManager _unitOfWorkManager;
 
-        public IEventBus EventBus
-        {
-            get;
-            set;
-        }
+        public IEventBus EventBus { get; set; }
 
         public EntityChangeEventHelper(IUnitOfWorkManager unitOfWorkManager)
         {

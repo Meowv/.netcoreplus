@@ -15,6 +15,7 @@ namespace Plus.Domain.Uow
         public const string DidNotCallCompleteMethodExceptionMessage = "未调用完整方法的工作单元";
 
         private volatile bool _isCompleteCalled;
+
         private volatile bool _isDisposed;
 
         public void Complete()
@@ -30,21 +31,13 @@ namespace Plus.Domain.Uow
 
         public void Dispose()
         {
-            if (_isDisposed)
+            if (!_isDisposed)
             {
-                return;
-            }
-
-            _isDisposed = true;
-
-            if (!_isCompleteCalled)
-            {
-                if (HasException())
+                _isDisposed = true;
+                if (!_isCompleteCalled && !HasException())
                 {
-                    return;
+                    throw new PlusException("Did not call Complete method of a unit of work.");
                 }
-
-                throw new PlusException(DidNotCallCompleteMethodExceptionMessage);
             }
         }
 
