@@ -41,14 +41,14 @@ namespace Plus.AutoMapper
         {
             lock (SyncObj)
             {
-                Action<IMapperConfigurationExpression> configurer = configuration =>
+                void configurer(IMapperConfigurationExpression configuration)
                 {
                     FindAndAutoMapTypes(configuration);
                     foreach (var configurator in Configuration.PlusAutoMapper().Configurators)
                     {
                         configurator(configuration);
                     }
-                };
+                }
                 if (Configuration.PlusAutoMapper().UseStaticMapper)
                 {
                     // 防止重复映射
