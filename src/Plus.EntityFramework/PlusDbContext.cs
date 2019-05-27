@@ -244,8 +244,7 @@ namespace Plus.EntityFramework
 
         protected virtual void AddDomainEvents(List<DomainEventEntry> domainEvents, object entityAsObj)
         {
-            var generatesDomainEventsEntity = entityAsObj as IGeneratesDomainEvents;
-            if (generatesDomainEventsEntity == null)
+            if (!(entityAsObj is IGeneratesDomainEvents generatesDomainEventsEntity))
             {
                 return;
             }
@@ -266,8 +265,7 @@ namespace Plus.EntityFramework
 
         protected virtual void CheckAndSetId(EntityEntry entry)
         {
-            var entity = entry.Entity as IEntity<Guid>;
-            if (entity != null && entity.Id == Guid.Empty)
+            if (entry.Entity is IEntity<Guid> entity && entity.Id == Guid.Empty)
             {
                 var idPropertyEntry = entry.Property("Id");
 

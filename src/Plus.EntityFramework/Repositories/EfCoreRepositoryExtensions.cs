@@ -14,8 +14,7 @@ namespace Plus.EntityFramework.Repositories
         public static DbContext GetDbContext<TEntity, TPrimaryKey>(this IRepository<TEntity, TPrimaryKey> repository)
             where TEntity : class, IEntity<TPrimaryKey>
         {
-            var repositoryWithDbContext = ProxyHelper.UnProxy(repository) as IRepositoryWithDbContext;
-            if (repositoryWithDbContext != null)
+            if (ProxyHelper.UnProxy(repository) is IRepositoryWithDbContext repositoryWithDbContext)
             {
                 return repositoryWithDbContext.GetDbContext();
             }
