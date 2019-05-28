@@ -9,59 +9,67 @@ namespace Plus.Dependency
     public interface IIocRegistrar
     {
         /// <summary>
-        /// Add Registrar
+        /// Adds a dependency registrar for conventional registration.
         /// </summary>
-        /// <param name="registrar"></param>
-        void AddRegistrar(IDependencyRegistrar registrar);
+        /// <param name="registrar">dependency registrar</param>
+        void AddConventionalRegistrar(IConventionalDependencyRegistrar registrar);
 
         /// <summary>
-        /// Register Assembly
+        /// Registers types of given assembly by all conventional registrars. See <see cref="IocManager.AddConventionalRegistrar"/> method.
         /// </summary>
-        /// <param name="assembly"></param>
+        /// <param name="assembly">Assembly to register</param>
         void RegisterAssembly(Assembly assembly);
 
         /// <summary>
-        /// Register
+        /// Registers types of given assembly by all conventional registrars. See <see cref="IocManager.AddConventionalRegistrar"/> method.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="lifeStyle"></param>
-        void Register<T>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton) where T : class;
+        /// <param name="assembly">Assembly to register</param>
+        /// <param name="config">Additional configuration</param>
+        void RegisterAssembly(Assembly assembly, ConventionalRegistrationConfig config);
 
         /// <summary>
-        /// Register
+        /// Registers a type as self registration.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="lifeStyle"></param>
+        /// <typeparam name="T">Type of the class</typeparam>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
+        void Register<T>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+            where T : class;
+
+        /// <summary>
+        /// Registers a type as self registration.
+        /// </summary>
+        /// <param name="type">Type of the class</param>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
         void Register(Type type, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton);
 
         /// <summary>
-        /// Register
+        /// Registers a type with it's implementation.
         /// </summary>
         /// <typeparam name="TType"></typeparam>
         /// <typeparam name="TImpl"></typeparam>
         /// <param name="lifeStyle"></param>
-        void Register<TType, TImpl>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton) where TType : class where TImpl : class, TType;
+        void Register<TType, TImpl>(DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton)
+            where TType : class
+            where TImpl : class, TType;
 
         /// <summary>
-        /// Register
+        /// Registers a type with it's implementation.
         /// </summary>
-        /// <param name="type"></param>
-        /// <param name="impl"></param>
-        /// <param name="lifeStyle"></param>
+        /// <param name="type">Type of the class</param>
+        /// <param name="impl">The type that implements <paramref name="type"/></param>
+        /// <param name="lifeStyle">Lifestyle of the objects of this type</param>
         void Register(Type type, Type impl, DependencyLifeStyle lifeStyle = DependencyLifeStyle.Singleton);
 
         /// <summary>
-        /// 是否注册了给定的类型
+        /// Checks whether given type is registered before.
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        bool IsRegistered<T>();
+        /// <param name="type">Type to check</param>
+        bool IsRegistered(Type type);
 
         /// <summary>
-        /// 是否注册了给定的类型
+        /// Checks whether given type is registered before.
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
-        bool IsRegistered(Type type);
+        /// <typeparam name="TType">Type to check</typeparam>
+        bool IsRegistered<TType>();
     }
 }

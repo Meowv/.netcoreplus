@@ -1,6 +1,5 @@
 ﻿using Castle.DynamicProxy;
 using Castle.MicroKernel.Registration;
-using Plus.Event;
 using System.Reflection;
 
 namespace Plus.Dependency
@@ -8,9 +7,9 @@ namespace Plus.Dependency
     /// <summary>
     /// 用于注册基本依赖项实现
     /// </summary>
-    public class BasicConventionalRegistrar : IDependencyRegistrar
+    public class BasicConventionalRegistrar : IConventionalDependencyRegistrar
     {
-        public void RegisterAssembly(IRegistrationContext context)
+        public void RegisterAssembly(IConventionalRegistrationContext context)
         {
             //Transient
             context.IocManager.IocContainer.Register(
@@ -39,16 +38,6 @@ namespace Plus.Dependency
                 Classes.FromAssembly(context.Assembly)
                     .IncludeNonPublicTypes()
                     .BasedOn<IInterceptor>()
-                    .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
-                    .WithService.Self()
-                    .LifestyleTransient()
-                );
-
-            //IConsumer
-            context.IocManager.IocContainer.Register(
-                Classes.FromAssembly(context.Assembly)
-                    .IncludeNonPublicTypes()
-                    .BasedOn(typeof(IConsumer<>))
                     .If(type => !type.GetTypeInfo().IsGenericTypeDefinition)
                     .WithService.Self()
                     .LifestyleTransient()

@@ -18,7 +18,7 @@ namespace Plus
     {
         public override void PreInitialize()
         {
-            IocManager.AddRegistrar(new BasicConventionalRegistrar());
+            IocManager.AddConventionalRegistrar(new BasicConventionalRegistrar());
             ConfigureCaches();
             AddIgnoredTypes();
             AddMethodParameterValidators();

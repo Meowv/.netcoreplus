@@ -48,7 +48,10 @@ namespace Plus.EntityFramework
                     });
                 }
 
-                return _iocResolver.Resolve<TDbContext>(concreteType);
+                return _iocResolver.Resolve<TDbContext>(new
+                {
+                    options = CreateOptions<TDbContext>(connectionString, existingConnection)
+                });
             }
             catch (DependencyResolverException ex)
             {

@@ -2,24 +2,31 @@
 
 namespace Plus.Dependency
 {
-    public class ConventionalRegistrationContext : IRegistrationContext
+    /// <summary>
+    /// ConventionalRegistrationContext
+    /// </summary>
+    internal class ConventionalRegistrationContext : IConventionalRegistrationContext
     {
-        public Assembly Assembly
-        {
-            get;
-            private set;
-        }
+        /// <summary>
+        /// Gets the registering Assembly.
+        /// </summary>
+        public Assembly Assembly { get; private set; }
 
-        public IIocManager IocManager
-        {
-            get;
-            private set;
-        }
+        /// <summary>
+        /// Reference to the IOC Container to register types.
+        /// </summary>
+        public IIocManager IocManager { get; private set; }
 
-        internal ConventionalRegistrationContext(Assembly assembly, IIocManager iocManager)
+        /// <summary>
+        /// Registration configuration.
+        /// </summary>
+        public ConventionalRegistrationConfig Config { get; private set; }
+
+        internal ConventionalRegistrationContext(Assembly assembly, IIocManager iocManager, ConventionalRegistrationConfig config)
         {
             Assembly = assembly;
             IocManager = iocManager;
+            Config = config;
         }
     }
 }
