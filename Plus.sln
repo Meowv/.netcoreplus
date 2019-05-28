@@ -31,15 +31,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.RedisCache", "src\Plus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Extensions.Serialization", "src\Plus.Extensions.Serialization\Plus.Extensions.Serialization.csproj", "{209BF4EB-311F-45AD-AED6-F314A49D83C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Web.Tests", "Plus.Web.Tests\Plus.Web.Tests.csproj", "{879A21A2-38A9-45C9-89C1-6BB7709C4F0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Web.Tests", "test\Plus.Web.Tests\Plus.Web.Tests.csproj", "{879A21A2-38A9-45C9-89C1-6BB7709C4F0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Core.Tests", "Plus.Core.Tests\Plus.Core.Tests.csproj", "{1017D21C-DE53-4791-8624-7727FFD73FD0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Core.Tests", "test\Plus.Core.Tests\Plus.Core.Tests.csproj", "{1017D21C-DE53-4791-8624-7727FFD73FD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.EFCore.Test", "Plus.EFCore.Test\Plus.EFCore.Test.csproj", "{4CF853EC-99EC-4441-B086-9EA2C761DB03}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.EFCore.Test", "test\Plus.EFCore.Test\Plus.EFCore.Test.csproj", "{4CF853EC-99EC-4441-B086-9EA2C761DB03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Services.Test", "Plus.Services.Test\Plus.Services.Test.csproj", "{D27671BF-7E67-4559-9DA6-E4AD418C3E7C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Services.Test", "test\Plus.Services.Test\Plus.Services.Test.csproj", "{D27671BF-7E67-4559-9DA6-E4AD418C3E7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Services.Dto.Test", "Plus.Services.Dto.Test\Plus.Services.Dto.Test.csproj", "{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Services.Dto.Test", "test\Plus.Services.Dto.Test\Plus.Services.Dto.Test.csproj", "{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
