@@ -9,6 +9,7 @@ using Plus.Dependency;
 using Plus.EFCore.Test;
 using Plus.Log4Net;
 using Plus.Modules;
+using Plus.MongoDb.Test;
 using Plus.Services.Dto.Test;
 using Plus.Services.Test;
 using System.Reflection;
@@ -60,7 +61,8 @@ namespace Plus.Web.Tests
         typeof(BlogCoreModule),
         typeof(BlogServicesModule),
         typeof(BlogServicesDtoModule),
-        typeof(BlogEntityFrameworkCoreModule)
+        typeof(BlogEntityFrameworkCoreModule),
+        typeof(BlogMongoDbModule)
     )]
     internal class BlogWebModule : PlusModule
     {

@@ -6,5 +6,7 @@ namespace Plus.Services.Test.Blog
     public partial interface IBlogService
     {
         Task<PostDto> Get(int id);
+
+        Task<ArticleDto> GetArticle(int id);
     }
 }

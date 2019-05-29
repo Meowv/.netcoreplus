@@ -32,5 +32,16 @@ namespace Plus.Web.Tests.Controllers
             };
             return response;
         }
+
+        [HttpGet]
+        [Route("GetArticle")]
+        public async Task<Response<ArticleDto>> GetArticle(int id)
+        {
+            var response = new Response<ArticleDto>
+            {
+                Result = await _blogService.GetArticle(id)
+            };
+            return response;
+        }
     }
 }

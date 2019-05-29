@@ -23,9 +23,9 @@ namespace Plus.Core.Tests.Configuration
 
         public static class MongoDb
         {
-            private static IConfigurationSection MongoDbSection => _config.GetSection("MongoDb");
+            private static IConfigurationSection MongoDbSection => ConnectionStrings.GetSection("MongoDb");
 
-            public static string ConnectionMode => MongoDbSection["ConnectionMode"];
+            public static string ConnectionMode => MongoDbSection["ConnectionMode"] ?? "";
 
             public static string DatabaseName => MongoDbSection["DatabaseName"];
 

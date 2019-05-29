@@ -9,15 +9,25 @@ namespace Plus.Services.Test.Blog.Impl
     {
         private readonly IPostRepository _postRepository;
 
-        public BlogService(IPostRepository postRepository)
+        private readonly IArticleRepository _articleRepository;
+
+        public BlogService(IPostRepository postRepository, IArticleRepository articleRepository)
         {
             _postRepository = postRepository;
+            _articleRepository = articleRepository;
+
         }
 
         public async Task<PostDto> Get(int id)
         {
             var entity = await _postRepository.GetAsync(id);
             return entity.MapTo<PostDto>();
+        }
+
+        public async Task<ArticleDto> GetArticle(int id)
+        {
+            var entity = await _articleRepository.FirstOrDefaultAsync(x => x.NumId == id);
+            return entity.MapTo<ArticleDto>();
         }
     }
 }

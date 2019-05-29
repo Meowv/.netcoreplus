@@ -31,15 +31,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.RedisCache", "src\Plus
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Extensions.Serialization", "src\Plus.Extensions.Serialization\Plus.Extensions.Serialization.csproj", "{209BF4EB-311F-45AD-AED6-F314A49D83C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Web.Tests", "test\Plus.Web.Tests\Plus.Web.Tests.csproj", "{879A21A2-38A9-45C9-89C1-6BB7709C4F0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Web.Tests", "test\Plus.Web.Tests\Plus.Web.Tests.csproj", "{879A21A2-38A9-45C9-89C1-6BB7709C4F0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Core.Tests", "test\Plus.Core.Tests\Plus.Core.Tests.csproj", "{1017D21C-DE53-4791-8624-7727FFD73FD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Core.Tests", "test\Plus.Core.Tests\Plus.Core.Tests.csproj", "{1017D21C-DE53-4791-8624-7727FFD73FD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.EFCore.Test", "test\Plus.EFCore.Test\Plus.EFCore.Test.csproj", "{4CF853EC-99EC-4441-B086-9EA2C761DB03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.EFCore.Test", "test\Plus.EFCore.Test\Plus.EFCore.Test.csproj", "{4CF853EC-99EC-4441-B086-9EA2C761DB03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Services.Test", "test\Plus.Services.Test\Plus.Services.Test.csproj", "{D27671BF-7E67-4559-9DA6-E4AD418C3E7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Services.Test", "test\Plus.Services.Test\Plus.Services.Test.csproj", "{D27671BF-7E67-4559-9DA6-E4AD418C3E7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.Services.Dto.Test", "test\Plus.Services.Dto.Test\Plus.Services.Dto.Test.csproj", "{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Services.Dto.Test", "test\Plus.Services.Dto.Test\Plus.Services.Dto.Test.csproj", "{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.MongoDb.Test", "Plus.MongoDb.Test\Plus.MongoDb.Test.csproj", "{D6796121-03B4-419D-B75E-560B29EFD06C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,6 +101,10 @@ Global
 		{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6796121-03B4-419D-B75E-560B29EFD06C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6796121-03B4-419D-B75E-560B29EFD06C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6796121-03B4-419D-B75E-560B29EFD06C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6796121-03B4-419D-B75E-560B29EFD06C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -117,6 +123,7 @@ Global
 		{4CF853EC-99EC-4441-B086-9EA2C761DB03} = {AD27338E-5F7F-4C1A-9E6F-9BFED17EF75A}
 		{D27671BF-7E67-4559-9DA6-E4AD418C3E7C} = {AD27338E-5F7F-4C1A-9E6F-9BFED17EF75A}
 		{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6} = {AD27338E-5F7F-4C1A-9E6F-9BFED17EF75A}
+		{D6796121-03B4-419D-B75E-560B29EFD06C} = {AD27338E-5F7F-4C1A-9E6F-9BFED17EF75A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {44529F52-F5EE-4330-BB68-E09EB8B967E3}
