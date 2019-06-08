@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Services.Test", "test\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plus.Services.Dto.Test", "test\Plus.Services.Dto.Test\Plus.Services.Dto.Test.csproj", "{0F6DE8F7-14C0-4205-B14D-10DA2FEEB9D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.MongoDb.Test", "Plus.MongoDb.Test\Plus.MongoDb.Test.csproj", "{D6796121-03B4-419D-B75E-560B29EFD06C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plus.MongoDb.Test", "test\Plus.MongoDb.Test\Plus.MongoDb.Test.csproj", "{D6796121-03B4-419D-B75E-560B29EFD06C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
