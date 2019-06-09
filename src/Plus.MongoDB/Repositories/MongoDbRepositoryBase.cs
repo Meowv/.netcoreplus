@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using MongoDB.Driver.Linq;
+using Plus.Dependency;
 using Plus.Domain.Entities;
 using Plus.Domain.Repositories;
 using System.Linq;
@@ -10,8 +11,7 @@ namespace Plus.MongoDb.Repositories
     /// MongoDB Repository
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class MongoDbRepositoryBase<TEntity> : MongoDbRepositoryBase<TEntity, int>, IRepository<TEntity>
-        where TEntity : class, IEntity<int>
+    public abstract class MongoDbRepositoryBase<TEntity> : MongoDbRepositoryBase<TEntity, int>, IRepository<TEntity>, IRepository<TEntity, int>, IRepository, ITransientDependency where TEntity : class, IEntity<int>
     {
         public MongoDbRepositoryBase(IMongoDatabaseProvider databaseProvider)
             : base(databaseProvider)
@@ -24,23 +24,26 @@ namespace Plus.MongoDb.Repositories
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TPrimaryKey"></typeparam>
-    public class MongoDbRepositoryBase<TEntity, TPrimaryKey> : PlusRepositoryBase<TEntity, TPrimaryKey>
-        where TEntity : class, IEntity<TPrimaryKey>
+    public abstract class MongoDbRepositoryBase<TEntity, TPrimaryKey> : PlusRepositoryBase<TEntity, TPrimaryKey> where TEntity : class, IEntity<TPrimaryKey>
     {
-        public virtual MongoDatabase Database
-        {
-            get { return _databaseProvider.Database; }
-        }
+        private readonly IMongoDatabaseProvider _databaseProvider;
 
-        public virtual MongoCollection<TEntity> Collection
+        public virtual IMongoDatabase Database => _databaseProvider.Database;
+
+        public virtual IMongoCollection<TEntity> Collection
         {
             get
             {
-                return _databaseProvider.Database.GetCollection<TEntity>(typeof(TEntity).Name);
+                string name = CollectionName;
+                if (CollectionName.IsNullOrEmpty())
+                {
+                    name = typeof(TEntity).Name;
+                }
+                return _databaseProvider.Database.GetCollection<TEntity>(name, null);
             }
         }
 
-        private readonly IMongoDatabaseProvider _databaseProvider;
+        public abstract string CollectionName { get; }
 
         public MongoDbRepositoryBase(IMongoDatabaseProvider databaseProvider)
         {
@@ -55,7 +58,7 @@ namespace Plus.MongoDb.Repositories
         public override TEntity Get(TPrimaryKey id)
         {
             var query = MongoDB.Driver.Builders.Query<TEntity>.EQ(e => e.Id, id);
-            var entity = Collection.FindOne(query);
+            var entity = Collection.Find(query);
             if (entity.IsNull())
             {
                 throw new EntityNotFoundException("There is no such an entity with given primary key. Entity type: " + typeof(TEntity).FullName + ", primary key: " + id);
