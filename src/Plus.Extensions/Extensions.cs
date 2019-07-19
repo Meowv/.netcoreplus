@@ -6,6 +6,7 @@ using System.Data;
 using System.Dynamic;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -516,9 +517,53 @@ public static class Extensions
         }
     }
 
+    /// <summary>
+    /// Compresses the string
+    /// </summary>
+    /// <param name="this"></param>
+    /// <returns></returns>
+    public static string Compress(this string @this)
+    {
+        var buffer = Encoding.UTF8.GetBytes(@this);
+        var memoryStream = new MemoryStream();
+        using (var gzipStream = new GZipStream(memoryStream, CompressionMode.Compress, true))
+        {
+            gzipStream.Write(buffer, 0, buffer.Length);
+        }
+        memoryStream.Position = 0;
+        var compressedData = new byte[memoryStream.Length];
+        memoryStream.Read(compressedData, 0, compressedData.Length);
+        var gzipBuffer = new byte[compressedData.Length + 4];
+        Buffer.BlockCopy(compressedData, 0, gzipBuffer, 4, compressedData.Length);
+        Buffer.BlockCopy(BitConverter.GetBytes(buffer.Length), 0, gzipBuffer, 0, 4);
+        return Convert.ToBase64String(gzipBuffer);
+    }
+
     #endregion
 
     #region D
+
+    /// <summary>
+    /// Decompresses the string
+    /// </summary>
+    /// <param name="this"></param>
+    /// <returns></returns>
+    public static string DeCompress(this string @this)
+    {
+        byte[] gzipBuffer = Convert.FromBase64String(@this);
+        using (var memoryStream = new MemoryStream())
+        {
+            var dataLength = BitConverter.ToInt32(gzipBuffer, 0);
+            memoryStream.Write(gzipBuffer, 4, gzipBuffer.Length - 4);
+            var buffer = new byte[dataLength];
+            memoryStream.Position = 0;
+            using (var gzipStream = new GZipStream(memoryStream, CompressionMode.Decompress))
+            {
+                gzipStream.Read(buffer, 0, buffer.Length);
+            }
+            return Encoding.UTF8.GetString(buffer);
+        }
+    }
 
     /// <summary>
     /// DecodeBase64
