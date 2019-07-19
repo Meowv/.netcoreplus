@@ -15,6 +15,8 @@ namespace Plus.MongoDb.Test
             _blogMongoDbDatabaseProvider = blogMongoDbDatabaseProvider;
         }
 
+        public IMongoClient Client => _blogMongoDbDatabaseProvider.Client;
+
         public IMongoDatabase Database => _blogMongoDbDatabaseProvider.Database;
     }
 

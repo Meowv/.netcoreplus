@@ -12,11 +12,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Plus.MongoDb.Test\Plus.MongoDb.Test.csproj" />
     <ProjectReference Include="..\..\src\Plus.Extensions\Plus.Extensions.csproj" />
     <ProjectReference Include="..\..\src\Plus.Log4Net\Plus.Log4Net.csproj" />
     <ProjectReference Include="..\Plus.Core.Tests\Plus.Core.Tests.csproj" />
     <ProjectReference Include="..\Plus.EFCore.Test\Plus.EFCore.Test.csproj" />
+    <ProjectReference Include="..\Plus.MongoDb.Test\Plus.MongoDb.Test.csproj" />
     <ProjectReference Include="..\Plus.Services.Test\Plus.Services.Test.csproj" />
   </ItemGroup>
 
