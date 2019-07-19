@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Copyright>https://meowv.com</Copyright>
+    <Authors>阿星Plus</Authors>
+    <Company>https://meowv.com</Company>
+    <Product>Plus.MongoDb</Product>
+    <Title>Plus.MongoDb - .netcoreplus</Title>
+    <Description>.netcoreplus(Plus.MongoDb) - .NET Core 简易版快速开发框架</Description>
+    <RepositoryUrl>https://github.com/Meowv/.netcoreplus</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/Meowv/.netcoreplus</PackageProjectUrl>
+    <PackageIconUrl>https://avatars2.githubusercontent.com/u/13010050</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageTags>plus;plus.mongodb;.netcoreplus;</PackageTags>
+    <PackageReleaseNotes>Plus.MongoDb</PackageReleaseNotes>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>Plus.MongoDb.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
+    <DocumentationFile>Plus.MongoDb.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="mongocsharpdriver" Version="2.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plus\Plus.csproj" />
+  </ItemGroup>
+
+</Project>

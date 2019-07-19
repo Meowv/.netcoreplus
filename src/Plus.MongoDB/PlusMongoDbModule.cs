@@ -1,5 +1,6 @@
 ﻿using Plus.Modules;
 using Plus.MongoDb.Configuration;
+using Plus.MongoDb.Uow;
 using System.Reflection;
 
 namespace Plus.MongoDb
@@ -17,6 +18,7 @@ namespace Plus.MongoDb
 
         public override void Initialize()
         {
+            IocManager.Register<IMongoDatabaseProvider, UnitOfWorkMongoDatabaseProvider>();
             IocManager.RegisterAssembly(Assembly.GetExecutingAssembly());
         }
     }

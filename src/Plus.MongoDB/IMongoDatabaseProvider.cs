@@ -3,13 +3,12 @@
 namespace Plus.MongoDb
 {
     /// <summary>
-    /// Defines interface to obtain a <see cref="MongoDatabase"/> object.
+    /// IMongoDatabaseProvider
     /// </summary>
     public interface IMongoDatabaseProvider
     {
-        /// <summary>
-        /// Gets the <see cref="MongoDatabase"/>.
-        /// </summary>
-        MongoDatabase Database { get; }
+        IMongoClient Client { get; }
+
+        IMongoDatabase Database { get; }
     }
 }

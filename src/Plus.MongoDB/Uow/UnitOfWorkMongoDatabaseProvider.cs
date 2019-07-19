@@ -1,27 +1,24 @@
 ﻿using MongoDB.Driver;
-using Plus.Dependency;
-using Plus.Domain.Uow;
+using Plus.MongoDb.Configuration;
 
 namespace Plus.MongoDb.Uow
 {
     /// <summary>
     /// Implements <see cref="IMongoDatabaseProvider"/> that gets database from active unit of work.
     /// </summary>
-    public class UnitOfWorkMongoDatabaseProvider : IMongoDatabaseProvider, ITransientDependency
+    public class UnitOfWorkMongoDatabaseProvider : IMongoDatabaseProvider
     {
-        public MongoDatabase Database
-        {
-            get
-            {
-                return ((MongoDbUnitOfWork)_currentUnitOfWork.Current).Database;
-            }
-        }
+        private IMongoDbModuleConfiguration _configuration;
 
-        private readonly ICurrentUnitOfWorkProvider _currentUnitOfWork;
+        public IMongoClient Client { get; private set; }
 
-        public UnitOfWorkMongoDatabaseProvider(ICurrentUnitOfWorkProvider currentUnitOfWork)
+        public IMongoDatabase Database { get; private set; }
+
+        public UnitOfWorkMongoDatabaseProvider(IMongoDbModuleConfiguration configuration)
         {
-            _currentUnitOfWork = currentUnitOfWork;
+            _configuration = configuration;
+            Client = new MongoClient(_configuration.ConnectionString);
+            Database = Client.GetDatabase(_configuration.DatabaseName, null);
         }
     }
 }
