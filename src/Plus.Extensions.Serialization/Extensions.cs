@@ -1,9 +1,11 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Plus.Extensions.Serialization;
 using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
 
 /// <summary>
@@ -111,5 +113,23 @@ public static class Extensions
         settings.Converters.Insert(0, new DataTimeConverter());
 
         return JsonConvert.DeserializeObject(value, type, settings);
+    }
+
+    public static async Task<T> GetObjectFromJsonFile<T>(string filePath, string key = "") where T : new()
+    {
+        if (!File.Exists(filePath))
+        {
+            return new T();
+        }
+        using (StreamReader reader = new StreamReader(filePath))
+        {
+            var json = await reader.ReadToEndAsync();
+            if (string.IsNullOrEmpty(key))
+            {
+                return JsonConvert.DeserializeObject<T>(json);
+            }
+
+            return !(JsonConvert.DeserializeObject<object>(json) is JObject obj) ? new T() : JsonConvert.DeserializeObject<T>(obj[key].ToString());
+        }
     }
 }
