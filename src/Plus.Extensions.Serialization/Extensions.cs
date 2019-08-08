@@ -115,7 +115,7 @@ public static class Extensions
         return JsonConvert.DeserializeObject(value, type, settings);
     }
 
-    public static async Task<T> GetObjectFromJsonFile<T>(string filePath, string key = "") where T : new()
+    public static async Task<T> GetObjectFromJsonFile<T>(this string filePath, string key = "") where T : new()
     {
         if (!File.Exists(filePath))
         {
